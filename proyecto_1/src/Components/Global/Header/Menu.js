@@ -12,7 +12,7 @@ class Menu extends Component {
                     <a className="nav-link" href="category.html">Categories</a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" href="product.html">Product</a>
+                    <a className="nav-link" href="Products">Products</a>
                 </li>
                 <li className="nav-item active">
                     <a className="nav-link" href="contact.html">Cart <span className="sr-only">(current)</span></a>
