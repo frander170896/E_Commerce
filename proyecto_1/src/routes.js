@@ -6,10 +6,13 @@ import { Route, Switch } from 'react-router-dom';
 import App from './Components/App';
 import ProductList from './Components/Products/ProductList';
 import Home from './Components/Home/Home';
-import Header from './Components/Global/Header/Header'
+import Register from './Components/Register/Register'
 import Cart from './Components/Cart/Cart.js'
-import Footer from './Components/Global/Footer/Footer'
 import About from './Components/About_us/About_us'
+
+import Header from './Components/Global/Header/Header'
+import Footer from './Components/Global/Footer/Footer'
+
 
 const AppRoutes = () =>
   <App>
@@ -19,6 +22,7 @@ const AppRoutes = () =>
       <Route exact path="/contact" component={Footer} />
       <Route exact path="/about_us" component={About} />
       <Route exact path="/Products" component={ProductList} />
+      <Route exact path="/Register" component={Register} />
       <Route exact path="/Home" component={Home} />
     </Switch>
   </App>;
