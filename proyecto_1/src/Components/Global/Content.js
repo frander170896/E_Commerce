@@ -16,10 +16,10 @@ class Content extends Component {
     const { body } = this.props;
 
     return (
-      <div className = "row" >
-        <div className="Content margenes-contenido">
-        {body}
-      </div>
+      <div>
+          <div className="Content margenes-contenido">
+            {body}
+          </div>
       </div>
     );
   }
