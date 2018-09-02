@@ -1,10 +1,13 @@
 import React,{Component} from 'react';
 
+
+//Componets
+import Info from './Info.js'
 class About extends Component{
     render (){
         return (
             <div>
-                <h1>Hola</h1>
+                <Info></Info>
             </div>
         );
     }
