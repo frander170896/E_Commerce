@@ -15,7 +15,7 @@ class Card extends Component {
   }
   render() {
     return (
-      <div className="card pl-3 pr-3">
+      <div className="card pl-3 pr-3 mb-3">
         <img className="card-img-top img-fluid rounded" src={this.state.usuario.avatar_url} alt="Card image cap" />
         <div className="card-body">
           <h5 className="card-title">{this.state.usuario.name ? this.state.usuario.name : this.state.usuario.login}</h5>
@@ -63,20 +63,6 @@ class CardGroup extends Component {
     //marcoc22
     //NAchoAvalos
     //frander170896
-    axios.get('https://api.github.com/users/marcoc22')
-      .then(function (response) {
-
-        self.setState({ marco: response.data })
-      }).catch(function (res) {
-
-      });
-    axios.get('https://api.github.com/users/NAchoAvalos')
-      .then(function (response) {
-
-        self.setState({ nacho: response.data })
-      }).catch(function (res) {
-
-      });
     axios.get('https://api.github.com/users/gersonvargas')
       .then(function (response) {
 
@@ -91,7 +77,7 @@ class CardGroup extends Component {
       }).catch(function (res) {
 
       });
-    axios.get('https://api.github.com/users/AnuardLuna')
+    axios.get('https://api.github.com/users/depm1992')
       .then(function (response) {
 
         self.setState({ anuard: response.data })
@@ -104,11 +90,6 @@ class CardGroup extends Component {
     return (
       <div className="card-group">
 
-        {this.state.marco ? <Card usuario={this.state.marco}
-          red_social={'https://www.facebook.com'}
-          trabajo_git={'https://github.com/marcoc22'}
-          about_me={'I am working as developer and I am studying at UNA, Costa Rica.'} /> : ''}
-
         {this.state.gerson ? <Card usuario={this.state.gerson}
           red_social={'https://www.facebook.com'}
           trabajo_git={'https://github.com/gersonvargas'}
@@ -119,14 +100,9 @@ class CardGroup extends Component {
           trabajo_git={'https://github.com/frander170896'}
           about_me={'I am working as a developer, graduated from UNA. Currently I am studying at UNA, Costa Rica.'} /> : ''}
 
-        {this.state.nacho ? <Card usuario={this.state.nacho}
-          red_social={'https://www.facebook.com'}
-          trabajo_git={'https://github.com/NachoAvalos'}
-          about_me={'Currently I am studying at UNA, Costa Rica.'} /> : ''}
-
         {this.state.anuard ? <Card usuario={this.state.anuard}
           red_social={'https://www.facebook.com'}
-          trabajo_git={'https://github.com/AnuarLuna'}
+          trabajo_git={'https://github.com/depm1992'}
           about_me={'I am working and studying at UNA.'} /> : ''}
       </div>
     );
