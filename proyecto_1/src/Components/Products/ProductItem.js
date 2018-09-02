@@ -44,8 +44,9 @@ class ProductItem extends Component {
             <div>
                 {this.state.show ? <ProductDetail show={this.state.show}
                     visible={this.state.show}
-                    company_url={this.props.company_url}
-                    company_description={this.props.company_description} how_to_apply={this.props.how_to_apply} company_logo={this.props.company_logo} jobtitle={this.props.jobtitle} description={this.props.job_description} /> : ''}
+                     company_logo={this.props.company_logo} 
+                      /> 
+                     : ''}
 
                 <div className="row p-2">
                     <div className="col-sm-3">
@@ -54,7 +55,10 @@ class ProductItem extends Component {
                                 <p>
                                     <b>{this.props.company}</b>
                                 </p>
-                              
+                                <ProductDetail show={this.state.show}
+                                visible={this.state.show}
+                                company_logo={this.props.company_logo} 
+                      /> 
                             </div>
                             <p>
                                 <i>{this.props.company_description}
@@ -79,10 +83,7 @@ class ProductItem extends Component {
                                 <i><strong>Last Modified:  </strong> {this.props.created_at}</i>
                                 
                                 </p>
-                                <button className="btn btn-secondary btn-sm active" 
-                                onClick={this.handleShow}>
                                
-                                View Job and apply</button>
                             </div>
                         </div>
                     </div>
