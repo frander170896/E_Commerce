@@ -9,6 +9,7 @@ import Home from './Components/Home/Home';
 import Register from './Components/Register/Register'
 import Cart from './Components/Cart/Cart.js'
 import About from './Components/About_us/About_us'
+import Login from './Components/Login/Login'
 
 import Header from './Components/Global/Header/Header'
 import Footer from './Components/Global/Footer/Footer'
@@ -23,6 +24,7 @@ const AppRoutes = () =>
       <Route exact path="/about_us" component={About} />
       <Route exact path="/Products" component={ProductList} />
       <Route exact path="/Register" component={Register} />
+      <Route exact path="/Login" component={Login} />
       <Route exact path="/Home" component={Home} />
     </Switch>
   </App>;

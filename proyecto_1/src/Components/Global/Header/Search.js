@@ -1,6 +1,18 @@
 import React, { Component } from 'react';
 
+import Login from "../../Login/Login";
+
 class Search extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            showLogin: true
+        };
+        this.handleShowLogin = this.handleShowLogin.bind(this);
+    }
+    handleShowLogin() {
+        this.setState({ showLogin: true });
+    }
   render() {
     return (
         <form className="form-inline my-2 my-lg-0">
@@ -16,6 +28,9 @@ class Search extends Component {
                 <i className="fa fa-shopping-cart"></i> Cart
                 <span className="badge badge-light ml-2">3</span>
             </a>
+            <p>            
+            {this.state.showLogin ? <Login /> : ''}
+            </p>
         </form>
     );
   }
