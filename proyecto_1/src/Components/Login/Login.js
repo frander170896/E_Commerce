@@ -1,15 +1,14 @@
 // Dependencies
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
 import user from '../Global/icons/usuario.png'
 
-class Login extends React.Component {
+class Login extends Component {
   constructor (props) {
     super(props)
     this.state = {
       modal: false,
-      api: 'api/index.php',
+      api: 'http://localhost/Proyectos/E_Commerce/server/index.php',
       email: '',
       password: '',
       login_correcto: false
@@ -17,38 +16,38 @@ class Login extends React.Component {
 
     this.toggle = this.toggle.bind(this)
     this.login = this.login.bind(this)
+    this.handleEmail = this.handleEmail.bind(this)
+    this.handlePassword = this.handlePassword.bind(this)
   }
 
   login () {
     var url = this.state.api +
-    '/login/' +
-    '?metodo=login&email=' + this.state.email + '&password=' + this.state.password
+    '/usuario' +
+    '/' + this.state.email + '-' + this.state.password
     try {
-  
-    fetch(url)
-      .then((response) => {
-        return response.json()
-      })
-      .then((data) => {
-
-        if (data) {
-          localStorage.setItem('loginUser', data.EMAIL)
-          // localStorage.setItem("tipo_usuario", data.TIPO_USUARIO)
-          localStorage.setItem('loggedUser', JSON.stringify(data))
-          this.toggle()
-          this.forceUpdate()
-        } else {
-          localStorage.setItem('loginUser', 'NULL')
-          document.getElementById('alerta').innerHTML =
-            '<p class="alert alert-danger"><small>Credenciales incorrectas, intente de nuevo</small><p>'
-          document.body.scrollTop = 0 // For Safari
-          document.documentElement.scrollTop = 0 //
-        }
-      })
-    }
-    catch(err) {
+      fetch(url)
+        .then((response) => {
+          return response.json()
+        })
+        .then((data) => {
+          console.log(data)
+          if (data) {
+            localStorage.setItem('loginUser', data.EMAIL)
+            // localStorage.setItem("tipo_usuario", data.TIPO_USUARIO)
+            localStorage.setItem('loggedUser', JSON.stringify(data))
+            this.toggle()
+            this.forceUpdate()
+          } else {
+            localStorage.setItem('loginUser', 'NULL')
+            document.getElementById('alerta').innerHTML =
+              '<p class="alert alert-danger"><small>Credenciales incorrectas, intente de nuevo</small><p>'
+            document.body.scrollTop = 0 // For Safari
+            document.documentElement.scrollTop = 0 //
+          }
+        })
+    } catch(err) {
       document.getElementById('alerta').innerHTML =
-      err.message;
+        err.message
     }
   }
 
@@ -57,7 +56,19 @@ class Login extends React.Component {
       modal: !this.state.modal
     })
   }
+  handleEmail (event) {
+    var correo = event.target.value
+    this.setState({
+      email: correo
+    })
+  }
 
+  handlePassword (event) {
+    var pass = event.target.value
+    this.setState({
+      password: pass
+    })
+  }
   render () {
     return (
       <div>
@@ -93,7 +104,8 @@ class Login extends React.Component {
                           type='email'
                           className='form-control'
                           id='email'
-                          placeholder='Email' />
+                          placeholder='Email'
+                          onChange={this.handleEmail} />
                       </div>
                     </div>
                     <div className='form-group'>
@@ -108,7 +120,8 @@ class Login extends React.Component {
                           type='password'
                           className='form-control'
                           id='password'
-                          placeholder='Password' />
+                          placeholder='Password'
+                          onChange={this.handlePassword} />
                       </div>
                     </div>
                     <Button color='secondary' className='btn btn-primary mb-2' onClick={this.login}>
@@ -116,7 +129,7 @@ class Login extends React.Component {
                     </Button>
                     <div id='alerta'></div>
                     <small><a href='register'>Or create an account</a></small>
-                    <div className='col-md-1' ></div>
+                    <div className='col-md-1'></div>
                   </form>
                 </div>
               </div>
