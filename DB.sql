@@ -31,6 +31,12 @@ CONSTRAINT FKcompra FOREIGN KEY (compra) REFERENCES compras (id)
 CREATE TABLE `implementosdeportivos`.`usuarios` (
 id bigint(20) NOT NULL AUTO_INCREMENT,
 usuario varchar(255) DEFAULT NULL,
-contraseña varchar(255) DEFAULT NULL,
+contra varchar(255) DEFAULT NULL,
 PRIMARY KEY (id)
 );
+
+INSERT INTO `implementosdeportivos`.`articulos` (`precio`, `descripcion`, `nombre`, `estado`) VALUES ('1000', 'Art1 desc', 'Art1', '1');
+INSERT INTO `implementosdeportivos`.`articulos` (`precio`, `descripcion`, `nombre`, `estado`) VALUES ('2000', 'Art2 desc', 'Art2', '1');
+INSERT INTO `implementosdeportivos`.`articulos` (`precio`, `descripcion`, `nombre`, `estado`) VALUES ('3000', 'Art3 desc', 'Art3', '1');
+
+INSERT INTO `implementosdeportivos`.`usuarios` (`usuario`, `contra`) VALUES ('david', '123');
