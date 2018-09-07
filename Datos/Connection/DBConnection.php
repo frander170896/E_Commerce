@@ -24,14 +24,14 @@ class DBConnection {
     }
 
     public static function crearConexionPDO() {
+        $conexion1;
         try {
-            $this->conexion = new PDO('mysql:host=localhost;dbname=db_farmacia', 'root', '');
+            $conexion1= new PDO('mysql:host=localhost;dbname=E_COMMERCE', 'root', '1234');
+            $conexion1->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (Exception $e) {
-            return false;
+            return $e->getMessage();
         }
-        return $this->conexion;
+        return $conexion1;
     }
 
 }
-
-?>

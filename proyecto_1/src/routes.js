@@ -10,6 +10,7 @@ import Register from './Components/Register/Register'
 import Cart from './Components/Cart/Cart.js'
 import About from './Components/About_us/About_us'
 import Login from './Components/Login/Login'
+import Contact from './Components/Contact/Contact'
 
 import Header from './Components/Global/Header/Header'
 import Footer from './Components/Global/Footer/Footer'
@@ -18,14 +19,15 @@ import Footer from './Components/Global/Footer/Footer'
 const AppRoutes = () =>
   <App>
     <Switch>
+      
+    <Route exact path="/Home" component={Home} />
       <Route exact path="/cart" component={Cart} />
       <Route exact path="/about" component={Header} />
-      <Route exact path="/contact" component={Footer} />
+      <Route exact path="/contact" component={Contact} />
       <Route exact path="/about_us" component={About} />
       <Route exact path="/Products" component={ProductList} />
       <Route exact path="/Register" component={Register} />
       <Route exact path="/Login" component={Login} />
-      <Route exact path="/Home" component={Home} />
     </Switch>
   </App>;
 

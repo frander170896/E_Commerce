@@ -6,7 +6,7 @@ class Menu extends Component {
         <div className="collapse navbar-collapse justify-content-end" id="navbarsExampleDefault">
             <ul className="navbar-nav m-auto">
                 <li className="nav-item m-auto">
-                    <a className="nav-link" href="/Home">Home</a>
+                    <a className="nav-link active" href="/Home">Home</a>
                 </li>
                 <li className="nav-item">
                     <a className="nav-link" href="category.html">Categories</a>
@@ -14,11 +14,11 @@ class Menu extends Component {
                 <li className="nav-item">
                     <a className="nav-link" href="/Products">Products</a>
                 </li>
-                <li className="nav-item active">
-                    <a className="nav-link" href="/cart">Cart <span className="sr-only">(current)</span></a>
+                <li className="nav-item">
+                    <a className="nav-link" href="/cart">Cart</a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" href="contact.html">Contact</a>
+                    <a className="nav-link" href="/contact">Contact</a>
                 </li>
                 <li className="nav-item">
                     <a className="nav-link" href="/about_us">About us</a>
