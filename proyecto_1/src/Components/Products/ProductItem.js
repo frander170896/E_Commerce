@@ -39,6 +39,14 @@ class ProductItem extends Component {
     handleShow() {
         this.setState({ show: true });
     }
+    generarArray(a,b,c,d){
+        const array = {a,b,c,d}
+        return array;
+    }
+    handleDetails(a,b,c,d,e) { // se reciben los datos del articulo para enviarselos al padre
+        const array = this.generarArray(a,b,c,d);
+        this.props.evento(array);
+    }
     render() {
         return (
             <div>
@@ -57,8 +65,7 @@ class ProductItem extends Component {
                                 </p>
                                 <ProductDetail show={this.state.show}
                                 visible={this.state.show}
-                                company_logo={this.props.company_logo} 
-                      /> 
+                                company_logo={this.props.company_logo} /> 
                             </div>
                             <p>
                                 <i>{this.props.company_description}
@@ -73,7 +80,7 @@ class ProductItem extends Component {
                                 <h4 className="card-title">Product</h4>
                                 <h5 className="card-subtitle mb-2">{this.props.jobtitle}</h5>
                                 <p> <i>
-                                    <strong>Location:  </strong> {this.props.location ? this.props.location : 'Not especified.'}
+                                    <strong>Location:  </strong> {this.props.job_description ? this.props.location : 'Not especified.'}
                                 </i>
                                 </p>
                                 <p>
@@ -83,7 +90,7 @@ class ProductItem extends Component {
                                 <i><strong>Last Modified:  </strong> {this.props.created_at}</i>
                                 
                                 </p>
-                               
+                                <button className="btn btn-dander" onClick={()=>{this.handleDetails(this.props.jobtitle,this.props.job_description,this.props.job_type,this.props.created_at) }} >Add to cart</button>
                             </div>
                         </div>
                     </div>
