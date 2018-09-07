@@ -1,9 +1,10 @@
 <?php
+
 class Conexion
 {
     private static function init()
     {
-         $conexion=null;
+        $conexion = null;
         try {
             $conexion = new PDO('mysql:host=localhost;dbname=implementosdeportivos', 'root', 'root');
         } catch (Exception $e) {
@@ -15,6 +16,5 @@ class Conexion
     public static function getConexionPDO($id = null)
     {
         return Conexion::init();
-       
     }
 }
