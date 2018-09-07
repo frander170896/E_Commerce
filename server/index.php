@@ -1,24 +1,14 @@
 <?php
 require("Toro.php");
+require("Conexion.php");
 
 class ArticulosHandler
 {
 
-    var $conexion;
-
-    private function init()
-    {
-        try {
-            $this->conexion = new PDO('mysql:host=localhost;dbname=implementosdeportivos', 'root', 'root');
-        } catch (Exception $e) {
-            return false;
-        }
-        return $this->conexion;
-    }
 
     function get($id = null)
     {
-        $dbh = $this->init();
+        $dbh = Conexion::getConexionPDO();
         try {
             if ($id != null) {
                 $stmt = $dbh->prepare("SELECT * FROM articulos WHERE id = :id");
@@ -41,43 +31,31 @@ class ArticulosHandler
 class UsuariosHandler
 {
 
-    var $conexion;
-
-    private function init()
-    {
+   
+    public static function obtenerUsuario($email = null, $password = null) {
         try {
-            $this->conexion = new PDO('mysql:host=localhost;dbname=implementosdeportivos', 'root', 'root');
+            $dbh = Conexion::getConexionPDO();
+            if ($email && $password) {
+                $select = "SELECT * FROM usuarios WHERE username = '" . $email . "' and contra = '" . $password . "';";
+                $stmt = $dbh->prepare($select);
+                $stmt->execute();
+                $usuario = $stmt->fetchObject();
+                echo json_encode($usuario);
+            }
         } catch (Exception $e) {
-            return false;
+            echo "Failed: " . $e->getMessage();
         }
-        return $this->conexion;
     }
-
     function get($usuPass = null)
     {
-        $dbh = $this->init();
+        $dbh = Conexion::getConexionPDO();
 
         try {
             if ($usuPass != null) {
                 $split = explode("-", $usuPass);
                 $username = $split[0];
                 $pass = (string)$split[1];
-                if ($username != null && $pass != null) {
-                    $stmt = $dbh->prepare("SELECT * FROM usuarios WHERE usuario = :username");
-                    $stmt->bindParam(':username', $username);
-                    $stmt->execute();
-                    $data = Array();
-                    $passDB = "";
-                    while ($result = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                        $data[] = $result;
-                        $passDB = (string)$result["contra"];
-                    }
-                    if ($pass === $passDB) {
-                        echo "true";
-                    } else {
-                        echo "false";
-                    }
-                }
+                return $this->obtenerUsuario($username,$pass);
             }
         } catch (Exception $e) {
             echo "Failed: " . $e->getMessage();

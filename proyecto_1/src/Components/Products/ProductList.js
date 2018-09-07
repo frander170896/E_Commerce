@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ProductItem from './ProductItem';
+import Lupa from '../Global/images/lupa.png';
 
 class ProductList extends Component {
     constructor(props) {
@@ -21,11 +22,29 @@ class ProductList extends Component {
         console.log(this.state.Cart)
         // aqui se debe de llamar el metodo que consume el web service con el fin de que envie los datos del articulo seleccionado y lo agregue a la variable de session.
     }
+    filterList(event) {
+        var updatedList = this.state.jobs;
+        updatedList = updatedList.filter(function (item) {
+            return item.title.toLowerCase().search(
+                event.target.value.toLowerCase()) !== -1;
+        });
+        this.setState({
+            datosFiltrados: updatedList,
+            isfiltrado: true
+        });
+    }
     render() {
         return (
             //this.state.jobs.map(elemento => <div key={elemento.id}>
             <div>
                 <h2 className='ml-3 mt-3'>Available products</h2>
+                <div className="input-group-prepend m-3">
+                            <span className="input-group-text" id="inputGroup-sizing-default">
+                                <img src={Lupa} />
+                            </span>
+                            <input className="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" type="text"
+                                placeholder="Search" onChange={this.filterList} />
+                        </div>
                 <ProductItem jobtitle={'Producto 01'}
                     job_type = {'Boxer'}
                     job_description={'This is an important element for your life'}

@@ -16,7 +16,7 @@ class Card extends Component {
   render () {
     return (
       <div className='card pl-3 pr-3 mb-3'>
-        <img className='card-img-top img-fluid rounded' src={this.state.usuario.avatar_url} alt='Card image cap' />
+        <img className='card-img-top img-fluid rounded' src={this.state.usuario.avatar_url} alt='user' />
         <div className='card-body'>
           <h5 className='card-title'>{this.state.usuario.name ? this.state.usuario.name : this.state.usuario.login}</h5>
           <p className='card-text'>
