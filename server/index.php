@@ -4,8 +4,6 @@ require("Conexion.php");
 
 class ArticulosHandler
 {
-
-
     function get($id = null)
     {
         $dbh = Conexion::getConexionPDO();
@@ -30,9 +28,8 @@ class ArticulosHandler
 
 class UsuariosHandler
 {
-
-   
-    public static function obtenerUsuario($email = null, $password = null) {
+    public static function obtenerUsuario($email = null, $password = null)
+    {
         try {
             $dbh = Conexion::getConexionPDO();
             if ($email && $password) {
@@ -46,16 +43,15 @@ class UsuariosHandler
             echo "Failed: " . $e->getMessage();
         }
     }
+
     function get($usuPass = null)
     {
-        $dbh = Conexion::getConexionPDO();
-
         try {
             if ($usuPass != null) {
                 $split = explode("-", $usuPass);
                 $username = $split[0];
                 $pass = (string)$split[1];
-                return $this->obtenerUsuario($username,$pass);
+                return $this->obtenerUsuario($username, $pass);
             }
         } catch (Exception $e) {
             echo "Failed: " . $e->getMessage();
