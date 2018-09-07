@@ -1,9 +1,6 @@
 <?php
 class Conexion
 {
-
-    
-
     private static function init()
     {
          $conexion=null;
