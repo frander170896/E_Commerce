@@ -8,6 +8,7 @@ precio int(11) DEFAULT NULL,
 descripcion varchar(255) DEFAULT NULL,
 nombre varchar(255) DEFAULT NULL,
 estado int(11) NOT NULL,
+imagen varchar(255) DEFAULT NULL,
 PRIMARY KEY (id)
 );
 
