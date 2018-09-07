@@ -35,6 +35,7 @@ class Login extends Component {
             localStorage.setItem('loginUser', data.EMAIL)
             // localStorage.setItem("tipo_usuario", data.TIPO_USUARIO)
             localStorage.setItem('loggedUser', JSON.stringify(data))
+            window.location = '/Products';
             this.toggle()
             this.forceUpdate()
           } else {
