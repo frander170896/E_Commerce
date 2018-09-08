@@ -4,7 +4,7 @@ include_once("../Modelo/Conexion/Conexion.php");
 include_once("../Modelo/Entidades/Categoria.php");
 include_once("Handler/ArticulosHandler.php");
 include_once("Handler/UsuariosHandler.php");
-
+include_once("Handler/CategoriasHandler.php");
 
 Toro::serve(array(
     "/implDeport/" => "ArticulosHandler",

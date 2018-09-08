@@ -16,20 +16,3 @@ class UsuariosHandler
         }
     }
 }
-class CategoriasHandler
-{
-    function get($id = null)
-    {
-        try {
-            if ($id != null) {
-                $stmt = $dbh->prepare("SELECT * FROM articulos WHERE id = :id");
-                $stmt->bindParam(':id', $id);
-            } else {
-               return Categoria::obtenerProductosCategorias();
-            }
-            
-        } catch (Exception $e) {
-            echo App::error($e->getMessage());
-        }
-    }
-}
