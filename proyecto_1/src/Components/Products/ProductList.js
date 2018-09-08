@@ -64,6 +64,7 @@ class ProductList extends Component {
         })
         .then((data) => {
           if (data) {
+            //console.log(data)
             this.setState({productos: data })
           } else {
           }
@@ -97,6 +98,7 @@ class ProductList extends Component {
                                                         //id: "1", precio: "1000", descripcion: "Art1 desc", nombre: "Art1", estado: "1"
                                                         nombre={elemento.nombre}
                                                         precio={elemento.precio}
+                                                        cantidad={elemento.cantidad}
                                                         descripcion={elemento.descripcion}
                                                         server_url={this.state.server_url}                               
                                                         imagen={elemento.imagen}
@@ -112,6 +114,7 @@ class ProductList extends Component {
                                                         //id: "1", precio: "1000", descripcion: "Art1 desc", nombre: "Art1", estado: "1"
                                                         nombre={elemento.nombre}
                                                         precio={elemento.precio}
+                                                        cantidad={elemento.cantidad}
                                                         descripcion={elemento.descripcion}
                                                         server_url={this.state.server_url}                               
                                                         imagen={elemento.imagen}

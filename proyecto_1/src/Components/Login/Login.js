@@ -22,24 +22,31 @@ class Login extends Component {
 
   login () {
     var url = this.state.api +
-    '/usuario' +
-    '/' + this.state.email + '-' + this.state.password
+    '/usuario/' + this.state.email + '-' + this.state.password
+    // var url="http://localhost:8098/Proyectos/E_Commerce/server/Controlador/index.php/usuario/david-1234"
     try {
       fetch(url)
         .then((response) => {
           return response.json()
         })
         .then((data) => {
-          console.log(data)
           if (data) {
-            let Cart = [];
-            localStorage.setItem('loginUser', data.EMAIL)
-            // localStorage.setItem("tipo_usuario", data.TIPO_USUARIO)
-            localStorage.setItem('loggedUser', JSON.stringify(data))
-            localStorage.setItem('Cart', JSON.stringify(Cart))
-            window.location = '/Products';
-            this.toggle()
-            this.forceUpdate()
+            if (data.code != 401) {
+              let Cart = []
+              localStorage.setItem('loginUser', data.EMAIL)
+              // localStorage.setItem("tipo_usuario", data.TIPO_USUARIO)
+              localStorage.setItem('loggedUser', JSON.stringify(data))
+              localStorage.setItem('Cart', JSON.stringify(Cart))
+              window.location = '/Products'
+              this.toggle()
+              this.forceUpdate()
+            }else {
+              localStorage.setItem('loginUser', 'NULL')
+              document.getElementById('alerta').innerHTML =
+                '<p class="alert alert-danger"><small>Credenciales incorrectas, intente de nuevo</small><p>'
+              document.body.scrollTop = 0 // For Safari
+              document.documentElement.scrollTop = 0 //
+            }
           } else {
             localStorage.setItem('loginUser', 'NULL')
             document.getElementById('alerta').innerHTML =
