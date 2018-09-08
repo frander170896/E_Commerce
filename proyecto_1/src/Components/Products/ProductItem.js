@@ -86,7 +86,7 @@ class ProductItem extends Component {
                                 <i><strong>Last Modified:  </strong> {this.props.creado}</i>
                                 
                                 </p>
-                                <button className="btn btn-dander"
+                                <button className="btn btn-danger"
                                  onClick={()=>{this.handleDetails(this.props.id,this.props.nombre,
                                  this.props.descripcion,
                                  this.props.precio,this.props.creado) 

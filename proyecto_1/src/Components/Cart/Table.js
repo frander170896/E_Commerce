@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import Checkout from './Checkout'
 // Components
 
 class Table extends Component {
@@ -8,6 +8,7 @@ class Table extends Component {
     super(props);
     this.state = {
       Cart: JSON.parse(localStorage.Cart),
+      showCheckOut: true
     };
 
   }
@@ -67,13 +68,20 @@ class Table extends Component {
                           </tr>
                       </table>         
               </div>
+              <div className="row">
+                <div className="col-sm-12 offset-md-4 col-md-4 offset-lg-4 col-lg-4">
+                    {this.state.showCheckOut ? <Checkout total={total}/> : ''}
+                </div>
+              </div>
           </div>
          
       );
   }
   return(
     <p>The car is empty</p>
-  )
+  );
+  
+    
   }
 }
 

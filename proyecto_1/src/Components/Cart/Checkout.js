@@ -1,9 +1,8 @@
 // Dependencies
 import React, { Component } from 'react'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
-import user from '../Global/icons/usuario.png'
 
-class Login extends Component {
+class Checkout extends Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -23,7 +22,6 @@ class Login extends Component {
   login () {
     var url = this.state.api +
     '/usuario/' + this.state.email + '-' + this.state.password
-    // var url="http://localhost:8098/Proyectos/E_Commerce/server/Controlador/index.php/usuario/david-1234"
     try {
       fetch(url)
         .then((response) => {
@@ -79,71 +77,69 @@ class Login extends Component {
       password: pass
     })
   }
+
   render () {
     return (
       <div>
         <a
-          href='#'
+          href="#"
           id='navbar-static-login'
-          className='nav-link waves-effect waves-light'
-          onClick={this.toggle}><img src={user} className='img-thumbnail imgheader ml-3' alt='login' /></a>
+          className='nav-link waves-effect waves-light btn btn-success mt-1 mb-3'
+          onClick={this.toggle}> Check out cart  <i className="fa fa-shopping-cart"></i>  </a>
+
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className + ' modal-dialog-centered-y'}>
           <ModalHeader toggle={this.toggle}>
-            Login
+            Pay
           </ModalHeader>
           <ModalBody>
-            <div className='row'>
-              <div className='col-md-1'></div>
-              <div className='card border-dark col-md-10'>
-                <div className='card-header h2'>
-                  Login
-                </div>
-                <div className='card-body text-dark'>
-                  <form>
-                    <div className='form-group'>
-                      <label className='sr-only'>
-                        Email
-                      </label>
-                      <div className='input-group mb-2'>
-                        <div className='input-group-prepend'>
-                          <div className='input-group-text'>
-                            @
-                          </div>
+          <div className='container'>
+                <form >
+                    <div className='row'>
+                        <div className='col-xs-12 col-sm-12 col-md-12 form-group required'>
+                            <label className='control-label'>Name on Card</label>
+                            <select className='form-control' type='text'>
+                                <option value="Visa">Visa</option>
+                                <option value="MasterCard">MasterCard</option>
+                                <option value="American Express">American Express</option>
+                                <option value="Visa Electron">Visa Electron</option>
+                            </select>
                         </div>
-                        <input
-                          type='email'
-                          className='form-control'
-                          id='email'
-                          placeholder='Email'
-                          onChange={this.handleEmail} />
-                      </div>
                     </div>
-                    <div className='form-group'>
-                      <label className='sr-only'>
-                        Password
-                      </label>
-                      <div className='input-group mb-2'>
-                        <div className='input-group-prepend'>
-                          <div className='input-group-text fa fa-user'></div>
+                    <div className='row'>
+                        <div className='col-xs-12 col-sm-12 col-md-12 form-group required'>
+                            <label className='control-label'>Card Number</label>
+                            <input autocomplete='off' className='form-control card-number' size='20' type='text'></input>
                         </div>
-                        <input
-                          type='password'
-                          className='form-control'
-                          id='password'
-                          placeholder='Password'
-                          onChange={this.handlePassword} />
-                      </div>
                     </div>
-                    <Button color='secondary' className='btn btn-primary mb-2' onClick={this.login}>
-                      Login
-                    </Button>
-                    <div id='alerta'></div>
-                    <small><a href='register'>Or create an account</a></small>
-                    <div className='col-md-1'></div>
-                  </form>
-                </div>
-              </div>
-            </div>
+                    <div className='form-row'>
+                        <div className='col-xs-4 form-group cvc required'>
+                            <label className='control-label'>CVC</label>
+                            <input autocomplete='off' className='form-control card-cvc' placeholder='ex. 311' size='4' type='text'></input>
+                        </div>
+                        <div className='col-xs-4 form-group expiration required'>
+                            <label className='control-label'>Expiration</label>
+                            <input className='form-control card-expiry-month' placeholder='MM' size='2' type='text'></input>
+                        </div>
+                        <div className='col-xs-4 form-group expiration required'>
+                            <label className='control-label'> </label>
+                            <input className='form-control card-expiry-year' placeholder='YYYY' size='4' type='text'></input>
+                        </div>
+                    </div>
+                    <div className='form-row'>
+                    <div className='col-md-12'>
+                        <div className='form-control total btn btn-info'>
+                        Total:
+                        <span className='amount'>{"₡"+this.props.total}</span>
+                        </div>
+                    </div>
+                    </div>
+                    <div className='form-row'>
+                        <div className='col-md-12 form-group'>
+                            <button className='form-control btn btn-primary submit-button' type='submit'>Pay »</button>
+                        </div>
+                    </div>
+                </form>
+        </div>
           </ModalBody>
           <ModalFooter>
             <Button color='secondary' onClick={this.toggle}>
@@ -156,4 +152,4 @@ class Login extends Component {
   }
 }
 
-export default Login
+export default Checkout
