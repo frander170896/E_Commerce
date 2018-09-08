@@ -2,7 +2,7 @@
 require("Toro.php");
 include_once("../Modelo/Conexion/Conexion.php");
 include_once("../Modelo/Entidades/Categoria.php");
-include_once
+
 class ArticulosHandler
 {
     function get($id = null)

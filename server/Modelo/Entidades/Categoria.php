@@ -1,10 +1,8 @@
 <?php
-require("./Conexion.php");
-
 
 class Categoria
 {
-   public static function obtenerProductosCategorias
+   public static function obtenerProductosCategorias()
     {
         $dbh = Conexion::getConexionPDO();
         try {
@@ -18,6 +16,7 @@ class Categoria
                 $data[] = $result;
             }
             echo json_encode($data);
+        }
         } catch (Exception $e) {
             echo "Failed: " . $e->getMessage();
         }
