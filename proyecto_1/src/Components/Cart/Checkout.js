@@ -14,12 +14,10 @@ class Checkout extends Component {
     }
 
     this.toggle = this.toggle.bind(this)
-    this.login = this.login.bind(this)
-    this.handleEmail = this.handleEmail.bind(this)
-    this.handlePassword = this.handlePassword.bind(this)
+   
   }
 
-  login () {
+  Guardar () {
     var url = this.state.api +
     '/usuario/' + this.state.email + '-' + this.state.password
     try {
@@ -62,19 +60,6 @@ class Checkout extends Component {
   toggle () {
     this.setState({
       modal: !this.state.modal
-    })
-  }
-  handleEmail (event) {
-    var correo = event.target.value
-    this.setState({
-      email: correo
-    })
-  }
-
-  handlePassword (event) {
-    var pass = event.target.value
-    this.setState({
-      password: pass
     })
   }
 
@@ -135,7 +120,7 @@ class Checkout extends Component {
                     </div>
                     <div className='form-row'>
                         <div className='col-md-12 form-group'>
-                            <button className='form-control btn btn-primary submit-button' type='submit'>Pay »</button>
+                            <button className='form-control btn btn-primary submit-button' onClick={this.Guardar}>Pay »</button>
                         </div>
                     </div>
                 </form>

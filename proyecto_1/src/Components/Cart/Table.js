@@ -30,7 +30,7 @@ class Table extends Component {
                   <tr key={index} data-item={index} >
                       <td>{producto.nombre}</td>
                       <td>In stock</td>
-                      <td> <input className='form-control' value="1" type='number' onChange={()=>{this.UpdateQuantity(1)}} /></td>
+                      <td> <input className='form-control' value="1" type='number' /></td>
                       <td>{"₡"+producto.precio}</td>
                       <td className='text-right'>
                         <button className='btn btn-sm btn-danger' onClick={()=>{this.deleteCart(index,this)}} >
