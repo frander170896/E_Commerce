@@ -41,6 +41,10 @@ CREATE TABLE `implementosdeportivos`.`usuarios` (
 id bigint(20) NOT NULL AUTO_INCREMENT,
 usuario varchar(255) DEFAULT NULL,
 contra varchar(255) DEFAULT NULL,
+nombrecompleto varchar(255),
+username varchar(255),
+gender int,
+email varchar(255),
 PRIMARY KEY (id)
 );
 
@@ -59,5 +63,10 @@ INSERT INTO `implementosdeportivos`.`articulos` (`precio`, `descripcion`, `nombr
 VALUES ('2000', 'Art2 desc', 'Art2', '1',3);
 INSERT INTO `implementosdeportivos`.`articulos` (`precio`, `descripcion`, `nombre`, `estado`,`cantidad`) 
 VALUES ('3000', 'Art3 desc', 'Art3', '1',1);
+
+INSERT INTO `implementosdeportivos`.`categoria` (`ARTICULO_ID`, `CATEGORY_NAME`) 
+VALUES (1, 'Individuales');
+INSERT INTO `implementosdeportivos`.`categoria` (`ARTICULO_ID`, `CATEGORY_NAME`) 
+VALUES (2, 'Combos');
 
 INSERT INTO `implementosdeportivos`.`usuarios` (`usuario`, `contra`) VALUES ('david', '123');
