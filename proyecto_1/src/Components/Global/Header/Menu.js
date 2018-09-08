@@ -9,14 +9,12 @@ class Menu extends Component {
                     <a className="nav-link active" href="/Home">Home</a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" href="/categorias">Categories</a>
-                </li>
-                <li className="nav-item">
                     <a className="nav-link" href="/Products">Products</a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" href="/cart">Cart</a>
+                    <a className="nav-link" href="/categorias">Categories</a>
                 </li>
+                
                 <li className="nav-item">
                     <a className="nav-link" href="/contact">Contact</a>
                 </li>

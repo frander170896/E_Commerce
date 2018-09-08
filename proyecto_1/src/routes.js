@@ -19,7 +19,6 @@ import Footer from './Components/Global/Footer/Footer'
 const AppRoutes = () =>
   <App>
     <Switch>
-      
     <Route exact path="/Home" component={Home} />
       <Route exact path="/cart" component={Cart} />
       <Route exact path="/about" component={Header} />
