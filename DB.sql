@@ -2,11 +2,17 @@ CREATE SCHEMA `implementosdeportivos` ;
 
 use implementosdeportivos;
 
+drop table `implementosdeportivos`.`comprasArticulos`;
+drop table `implementosdeportivos`.`articulos`;
+drop TABLE `implementosdeportivos`.`usuarios`;
+drop TABLE `implementosdeportivos`.`compras`;
+
 CREATE TABLE `implementosdeportivos`.`articulos` (
 id bigint(20) NOT NULL AUTO_INCREMENT,
 precio int(11) DEFAULT NULL,
 descripcion varchar(255) DEFAULT NULL,
 nombre varchar(255) DEFAULT NULL,
+fecha_registro TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 estado int(11) NOT NULL,
 imagen varchar(255) DEFAULT NULL,
 PRIMARY KEY (id)
