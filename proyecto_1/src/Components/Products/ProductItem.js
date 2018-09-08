@@ -26,14 +26,7 @@ class ProductItem extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            jobtitle: null,
-            job_description: null,
-            company_logo: null,
-            company_url: null,
-            job_type: null,
-            company_description: null,
-            created_at: null,
-            how_to_apply: null,
+            
             show: false
         };
         this.handleShow = this.handleShow.bind(this);
@@ -85,6 +78,9 @@ class ProductItem extends Component {
                                 </p>
                                 <p>
                                     <i><strong>Job Type:  </strong> {"₡"+this.props.precio}</i>
+                                </p>
+                                <p>
+                                    <i><strong>Unidades:  </strong> {this.props.cantidad}</i>
                                 </p>
                                 <p className="card-text">
                                 <i><strong>Last Modified:  </strong> {this.props.creado}</i>
