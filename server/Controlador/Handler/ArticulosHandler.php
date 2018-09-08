@@ -1,24 +1,24 @@
 <?php
-include_once("App.php");
-class Categoria
+include_once("../Modelo/Entidades/Articulo.php");
+class ArticulosHandler
 {
-   public static function obtenerProductosCategorias()
+    function get($id = null)
     {
         $dbh = Conexion::getConexionPDO();
         try {
             if ($id != null) {
-                $stmt = $dbh->prepare("SELECT ARTICULOS.*,CATEGORIA.CATEGORY_NAME FROM ARTICULOS
-                LEFT OUTER JOIN CATEGORIA
-                ON ARTICULOS.ID=CATEGORIA.ARTICULO_ID");
+                return Articulo::obtenerArticulos($id);
+            } else {
+                return Articulo::obtenerArticulos();
+            }
             $stmt->execute();
             $data = Array();
             while ($result = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 $data[] = $result;
             }
             echo json_encode($data);
-        }
         } catch (Exception $e) {
-            echo App::error($e->getMessage()); 
+            echo "Failed: " . $e->getMessage();
         }
     }
 }
