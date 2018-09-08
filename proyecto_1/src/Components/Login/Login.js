@@ -32,9 +32,11 @@ class Login extends Component {
         .then((data) => {
           console.log(data)
           if (data) {
+            let Cart = [];
             localStorage.setItem('loginUser', data.EMAIL)
             // localStorage.setItem("tipo_usuario", data.TIPO_USUARIO)
             localStorage.setItem('loggedUser', JSON.stringify(data))
+            localStorage.setItem('Cart', JSON.stringify(Cart))
             window.location = '/Products';
             this.toggle()
             this.forceUpdate()

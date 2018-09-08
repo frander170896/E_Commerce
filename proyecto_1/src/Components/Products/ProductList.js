@@ -20,10 +20,27 @@ class ProductList extends Component {
     this.filterList = this.filterList.bind(this)
   // console.log(this.state.jobs[0])
   }
-  
+  existInCart(cart,articulo){
+    let existe = false
+    for(var i = 0; i< cart.length; i++){
+      if(articulo.id == cart[i].id){
+        existe = true
+      }
+    }
+    return existe
+  }
+  saveCartLocalStorage(Aritculo){
+    let articulo = JSON.parse(Aritculo)
+    let cart = JSON.parse(localStorage.Cart)
+    console.log(cart)
+    if(!this.existInCart(cart,articulo)){
+      cart.push({id: articulo.id,nombre:articulo.nombre,descripcion: articulo.descripcion,precio : articulo.precio,creado: articulo.creado});
+      localStorage.setItem('Cart',JSON.stringify(cart))
+    }
+    console.log(cart)
+  }
   handleClickAddCart (data) {
-    this.setState({Cart: data})
-    console.log(this.state.Cart)
+    this.saveCartLocalStorage(data);
   // aqui se debe de llamar el metodo que consume el web service con el fin de que envie los datos del articulo seleccionado y lo agregue a la variable de session.
   }
   filterList (event) {
@@ -79,11 +96,12 @@ class ProductList extends Component {
                                                         jobtitle={elemento.nombre}
                                                         //id: "1", precio: "1000", descripcion: "Art1 desc", nombre: "Art1", estado: "1"
                                                         nombre={elemento.nombre}
-                                                        precio={"₡"+elemento.precio}
+                                                        precio={elemento.precio}
                                                         descripcion={elemento.descripcion}
                                                         server_url={this.state.server_url}                               
                                                         imagen={elemento.imagen}
                                                         creado={elemento.fecha_registro}
+                                                        id={elemento.id}
                                                         evento={this.handleClickAddCart} />
                                                     </div>
                                                      )
@@ -93,11 +111,12 @@ class ProductList extends Component {
                                                         jobtitle={elemento.nombre}
                                                         //id: "1", precio: "1000", descripcion: "Art1 desc", nombre: "Art1", estado: "1"
                                                         nombre={elemento.nombre}
-                                                        precio={"₡"+elemento.precio}
+                                                        precio={elemento.precio}
                                                         descripcion={elemento.descripcion}
                                                         server_url={this.state.server_url}                               
                                                         imagen={elemento.imagen}
                                                         creado={elemento.fecha_registro}
+                                                        id={elemento.id}
                                                         evento={this.handleClickAddCart} />
                                                     </div>
                                                      )

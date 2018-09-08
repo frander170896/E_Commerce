@@ -41,12 +41,12 @@ class ProductItem extends Component {
     handleShow() {
         this.setState({ show: true });
     }
-    generarArray(a,b,c,d){
-        const array = {a,b,c,d}
-        return array;
+    generarArray(id,nombre,descripcion,precio,creado){
+        const array = {id,nombre,descripcion,precio,creado}
+        return JSON.stringify(array);
     }
-    handleDetails(a,b,c,d,e) { // se reciben los datos del articulo para enviarselos al padre
-        const array = this.generarArray(a,b,c,d);
+    handleDetails(id,nombre,descripcion,precio,creado) { // se reciben los datos del articulo para enviarselos al padre
+        const array = this.generarArray(id,nombre,descripcion,precio,creado);
         this.props.evento(array);
     }
     render() {
@@ -84,14 +84,14 @@ class ProductItem extends Component {
                                 </i>
                                 </p>
                                 <p>
-                                    <i><strong>Job Type:  </strong> {this.props.precio}</i>
+                                    <i><strong>Job Type:  </strong> {"₡"+this.props.precio}</i>
                                 </p>
                                 <p className="card-text">
                                 <i><strong>Last Modified:  </strong> {this.props.creado}</i>
                                 
                                 </p>
                                 <button className="btn btn-dander"
-                                 onClick={()=>{this.handleDetails(this.props.nombre,
+                                 onClick={()=>{this.handleDetails(this.props.id,this.props.nombre,
                                  this.props.descripcion,
                                  this.props.precio,this.props.creado) 
                                  }} >Add to cart</button>

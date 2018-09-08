@@ -26,7 +26,7 @@ class Search extends Component {
             </div>
             <a className="btn btn-success btn-sm ml-3" href="cart.html">
                 <i className="fa fa-shopping-cart"></i> Cart
-                <span className="badge badge-light ml-2">3</span>
+                <span className="badge badge-light ml-2">{this.props.amount}</span>
             </a>
             <p>            
             {this.state.showLogin ? <Login /> : ''}

@@ -16,7 +16,7 @@ class Nav extends Component {
                 </button>
 
                 <Menu></Menu>
-                <Search></Search>
+                <Search amount={this.props.AmountCart}></Search>
             </div>
         </nav>
     );
