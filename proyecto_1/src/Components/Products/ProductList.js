@@ -6,6 +6,7 @@ class ProductList extends Component {
   constructor (props) {
     super(props)
     this.state = {
+      server_url:'http://localhost/Proyectos/E_Commerce/',
       api: 'http://localhost/Proyectos/E_Commerce/server/index.php',
       Cart: []
     // jobs: this.props.job_list
@@ -72,10 +73,12 @@ class ProductList extends Component {
                              <ProductItem
                                jobtitle={elemento.nombre}
                                //id: "1", precio: "1000", descripcion: "Art1 desc", nombre: "Art1", estado: "1"
-                               company={elemento.nombre}
-                               job_type={'Boxer'}
-                               job_description={elemento.descripcion}                               
-                               company_logo={elemento.imagen}
+                               nombre={elemento.nombre}
+                               precio={"₡"+elemento.precio}
+                               descripcion={elemento.descripcion}
+                               server_url={this.state.server_url}                               
+                               imagen={elemento.imagen}
+                               creado={elemento.fecha_registro}
                                evento={this.handleClickAddCart} />
                            </div>
                             )}

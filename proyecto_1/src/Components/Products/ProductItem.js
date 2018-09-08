@@ -5,7 +5,9 @@ import Company from "../Global/images/logo.svg";
 class ProductDetail extends Component {
     render() {
         return (
-            <img src={this.props.company_logo ? this.props.company_logo : Company} className="img-thumbnail img-company" alt="company" />
+            <img src={this.props.company_logo ?
+                this.props.server_url+this.props.company_logo : Company} 
+                 className="img-thumbnail img-company" alt="company" />
         );
     }
 }
@@ -50,26 +52,23 @@ class ProductItem extends Component {
     render() {
         return (
             <div>
-                {this.state.show ? <ProductDetail show={this.state.show}
-                    visible={this.state.show}
-                     company_logo={this.props.company_logo} 
-                      /> 
-                     : ''}
+              
 
                 <div className="row p-2">
                     <div className="col-sm-3">
                         <div className="card m-0  card-job">
                             <div className="card-body">
                                 <p>
-                                    <b>{this.props.company}</b>
+                                    <b>{this.props.nombre}</b>
                                 </p>
                                 <ProductDetail show={this.state.show}
                                 visible={this.state.show}
-                                company_logo={this.props.company_logo} /> 
+                                server_url={this.props.server_url}
+                                company_logo={this.props.imagen} /> 
                             </div>
                             <p>
                                 <i>{this.props.company_description}
-                                    <ApplyLink company_url={this.props.company_url} action_name={'Visit Us'} />
+                                    <ApplyLink company_url={this.props.imagen} action_name={'Visit Us'} />
                                 </i>
                             </p>
                         </div>
@@ -78,20 +77,24 @@ class ProductItem extends Component {
                         <div className="card  card-job">
                             <div className="card-body">
                                 <h4 className="card-title">Product</h4>
-                                <h5 className="card-subtitle mb-2">{this.props.jobtitle}</h5>
+                                <h5 className="card-subtitle mb-2">{this.props.nombre}</h5>
                                 <p> <i>
                                     <strong>Description:  </strong>
-                                     {this.props.job_description ? this.props.job_description : 'Not especified.'}
+                                     {this.props.descripcion ? this.props.descripcion : 'Not especified.'}
                                 </i>
                                 </p>
                                 <p>
-                                    <i><strong>Job Type:  </strong> {this.props.job_type}</i>
+                                    <i><strong>Job Type:  </strong> {this.props.precio}</i>
                                 </p>
                                 <p className="card-text">
-                                <i><strong>Last Modified:  </strong> {this.props.created_at}</i>
+                                <i><strong>Last Modified:  </strong> {this.props.creado}</i>
                                 
                                 </p>
-                                <button className="btn btn-dander" onClick={()=>{this.handleDetails(this.props.jobtitle,this.props.job_description,this.props.job_type,this.props.created_at) }} >Add to cart</button>
+                                <button className="btn btn-dander"
+                                 onClick={()=>{this.handleDetails(this.props.nombre,
+                                 this.props.descripcion,
+                                 this.props.precio,this.props.creado) 
+                                 }} >Add to cart</button>
                             </div>
                         </div>
                     </div>

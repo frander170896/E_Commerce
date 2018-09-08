@@ -31,8 +31,8 @@ id bigint(20) NOT NULL AUTO_INCREMENT,
 compra bigint(20) DEFAULT NULL,
 articulo bigint(20) DEFAULT NULL,
 PRIMARY KEY (id),
-CONSTRAINT FKarticulo FOREIGN KEY (articulo) REFERENCES articulos (id),
-CONSTRAINT FKcompra FOREIGN KEY (compra) REFERENCES compras (id)
+CONSTRAINT FKarticulo FOREIGN KEY (articulo) REFERENCES articulos (id) ON UPDATE CASCADE ON DELETE CASCADE,
+CONSTRAINT FKcompra FOREIGN KEY (compra) REFERENCES compras (id) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE `implementosdeportivos`.`usuarios` (
@@ -42,8 +42,11 @@ contra varchar(255) DEFAULT NULL,
 PRIMARY KEY (id)
 );
 
-INSERT INTO `implementosdeportivos`.`articulos` (`precio`, `descripcion`, `nombre`, `estado`) VALUES ('1000', 'Art1 desc', 'Art1', '1');
-INSERT INTO `implementosdeportivos`.`articulos` (`precio`, `descripcion`, `nombre`, `estado`) VALUES ('2000', 'Art2 desc', 'Art2', '1');
-INSERT INTO `implementosdeportivos`.`articulos` (`precio`, `descripcion`, `nombre`, `estado`) VALUES ('3000', 'Art3 desc', 'Art3', '1');
+INSERT INTO `implementosdeportivos`.`articulos` (`precio`, `descripcion`, `nombre`, `estado`, `imagen`)
+ VALUES ('1000', 'Art1 desc', 'Art1', '1','server/imagenes/a3.jpg');
+INSERT INTO `implementosdeportivos`.`articulos` (`precio`, `descripcion`, `nombre`, `estado`) 
+VALUES ('2000', 'Art2 desc', 'Art2', '1');
+INSERT INTO `implementosdeportivos`.`articulos` (`precio`, `descripcion`, `nombre`, `estado`) 
+VALUES ('3000', 'Art3 desc', 'Art3', '1');
 
 INSERT INTO `implementosdeportivos`.`usuarios` (`usuario`, `contra`) VALUES ('david', '123');
