@@ -9,27 +9,25 @@ class ProductList extends Component {
       server_url: 'http://localhost:8098/Proyectos/E_Commerce/',
       api: 'http://localhost:8098/Proyectos/E_Commerce/server/Controlador/index.php',
       Cart: [],
+      productos: [],
       datosFiltrados: null,
       isfiltrado: false
     // jobs: this.props.job_list
     }
 
-    this.componentDidMount = this.componentDidMount.bind(this)
     this.handleClickAddCart = this.handleClickAddCart.bind(this)
     this.componentWillMount = this.componentWillMount.bind(this)
     this.filterList = this.filterList.bind(this)
   // console.log(this.state.jobs[0])
   }
-  componentDidMount () {
-    this.setState({jobs: this.props.job_list})
-  }
+  
   handleClickAddCart (data) {
     this.setState({Cart: data})
     console.log(this.state.Cart)
   // aqui se debe de llamar el metodo que consume el web service con el fin de que envie los datos del articulo seleccionado y lo agregue a la variable de session.
   }
   filterList (event) {
-    var updatedList = this.state.Cart
+    var updatedList = this.state.productos
     updatedList = updatedList.filter(function (item) {
       return item.nombre.toLowerCase().search(
           event.target.value.toLowerCase()) !== -1
@@ -49,7 +47,7 @@ class ProductList extends Component {
         })
         .then((data) => {
           if (data) {
-            this.setState({Cart: data })
+            this.setState({productos: data })
           } else {
           }
         })
@@ -70,13 +68,13 @@ class ProductList extends Component {
             placeholder='Search'
             onChange={this.filterList} />
         </div>
-        {!this.state.Cart && !this.state.isfiltrado ?
+        {!this.state.productos && !this.state.isfiltrado ?
                             <div className="alert alert-primary" role="alert">
                                 <i><strong>Loading...</strong></i>
                             </div>
                             :
                             !this.state.isfiltrado && !this.state.datosFiltrados ?
-                            this.state.Cart.map(elemento => <div key={elemento.id}>
+                            this.state.productos.map(elemento => <div key={elemento.id}>
                                                       <ProductItem
                                                         jobtitle={elemento.nombre}
                                                         //id: "1", precio: "1000", descripcion: "Art1 desc", nombre: "Art1", estado: "1"
