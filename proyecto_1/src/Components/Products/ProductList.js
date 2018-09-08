@@ -6,8 +6,8 @@ class ProductList extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      server_url: 'http://localhost/Proyectos/E_Commerce/',
-      api: 'http://localhost/Proyectos/E_Commerce/server/Controlador/index.php',
+      server_url: 'http://localhost:8098/Proyectos/E_Commerce/',
+      api: 'http://localhost:8098/Proyectos/E_Commerce/server/Controlador/index.php',
       Cart: [],
       datosFiltrados: null,
       isfiltrado: false
