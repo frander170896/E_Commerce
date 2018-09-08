@@ -8,7 +8,7 @@ class Categoria
         try {
             
                 $stmt = $dbh->prepare("SELECT ARTICULOS.*,CATEGORIA.CATEGORY_NAME FROM ARTICULOS
-                LEFT OUTER JOIN CATEGORIA
+                RIGHT OUTER JOIN CATEGORIA
                 ON ARTICULOS.ID=CATEGORIA.ARTICULO_ID");
             $stmt->execute();
             $data = Array();

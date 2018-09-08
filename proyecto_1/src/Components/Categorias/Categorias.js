@@ -11,12 +11,14 @@ class Categorias extends Component {
       Cart: [],
       productos: [],
       datosFiltrados: null,
+      categorias:[],
       isfiltrado: false
     }
 
     this.handleClickAddCart = this.handleClickAddCart.bind(this)
     this.componentWillMount = this.componentWillMount.bind(this)
     this.filterList = this.filterList.bind(this)
+    this.filterCategory=this.filterCategory.bind(this)
     // console.log(this.state.jobs[0])
   }
   existInCart(cart, articulo) {
@@ -53,6 +55,22 @@ class Categorias extends Component {
       isfiltrado: true
     })
   }
+  obtenerCategorias(){
+    var url = this.state.api +
+      '/categoria/categorias'
+    try {
+      fetch(url)
+        .then((response) => {
+          return response.json()
+        })
+        .then((data) => {
+          if (data) {
+            this.setState({ categorias: data })
+          } else {
+          }
+        })
+    } catch (err) { }
+  }
   componentWillMount() {
     var url = this.state.api +
       '/categoria/productoscategorias'
@@ -68,18 +86,42 @@ class Categorias extends Component {
           } else {
           }
         })
-    } catch (err) { }
-  }
+    } catch (err) {
 
+     }
+     this.obtenerCategorias();
+  }
+  filterCategory(event){
+    var updatedList = this.state.productos
+    
+    updatedList = updatedList.filter(function (item) {
+      
+      return item.CATEGORY_NAME.toLowerCase().search(
+        event.target.value.toLowerCase()) !== -1
+    })
+    event.target.value!='All'?
+    this.setState({
+      datosFiltrados: updatedList,
+      isfiltrado: true
+    }):this.setState({
+      datosFiltrados:this.state.productos,
+      isfiltrado: false
+    })
+  }
   render() {
     return (
       <div className="row jobs">
         <div className="col-ms-4 col-md-3 col-lg-2" >
           <div>
             <label>Select Category</label>
-            <select id='ubicacion' required className="custom-select" onChange={this.filterListLocation}>
+            <select id='ubicacion' required className="custom-select" onChange={this.filterCategory}>
               <option value='All'>All Categories</option>
-
+                  {this.state.categorias.map((item, key) =>
+                    <option key={item.id}
+                        value={item.CATEGORY_NAME}>
+                        {item.CATEGORY_NAME}
+                    </option>
+                  )}
             </select>
           </div>
         </div>

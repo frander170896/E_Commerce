@@ -44,12 +44,14 @@ contra varchar(255) DEFAULT NULL,
 PRIMARY KEY (id)
 );
 
-CREATE TABLE implementosdeportivos.CATEGORIA (
-   ARTICULO_ID BIGINT(20) NOT NULL,
-   CATEGORY_ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-   CATEGORY_NAME INT NOT NULL,
-   FOREIGN KEY (ARTICULO_ID) REFERENCES ARTICULOS(ID) ON UPDATE CASCADE ON DELETE CASCADE
-) ENGINE = InnoDB ROW_FORMAT = DEFAULT;
+CREATE TABLE `categoria` (
+  `ARTICULO_ID` bigint(20) NOT NULL,
+  `CATEGORY_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `CATEGORY_NAME` varchar(100) NOT NULL,
+  PRIMARY KEY (`CATEGORY_ID`),
+  KEY `categoria_ibfk_1` (`ARTICULO_ID`),
+  CONSTRAINT `categoria_ibfk_1` FOREIGN KEY (`ARTICULO_ID`) REFERENCES `articulos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `implementosdeportivos`.`articulos` (`precio`, `descripcion`, `nombre`, `estado`,`cantidad`, `imagen`)
  VALUES ('1000', 'Art1 desc', 'Art1', '1',2,'server/imagenes/a3.jpg');
