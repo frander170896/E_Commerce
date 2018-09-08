@@ -48,7 +48,6 @@ class ProductList extends Component {
           return response.json()
         })
         .then((data) => {
-          console.log(data)
           if (data) {
             this.setState({Cart: data })
           } else {

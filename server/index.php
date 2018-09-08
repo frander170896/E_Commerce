@@ -1,7 +1,7 @@
 <?php
 require("Toro.php");
 require("Conexion.php");
-
+require("./TABLAS/Categoria.php");
 class ArticulosHandler
 {
     function get($id = null)
@@ -58,12 +58,30 @@ class UsuariosHandler
         }
     }
 }
-
+class CategoriasHandler
+{
+    function get($id = null)
+    {
+        try {
+            if ($id != null) {
+                $stmt = $dbh->prepare("SELECT * FROM articulos WHERE id = :id");
+                $stmt->bindParam(':id', $id);
+            } else {
+               return Categoria::obtenerProductosCategorias();
+            }
+            
+        } catch (Exception $e) {
+            echo "Failed: " . $e->getMessage();
+        }
+    }
+}
 Toro::serve(array(
     "/implDeport/" => "ArticulosHandler",
     "/implDeport/:alpha" => "ArticulosHandler",
     "/usuario/" => "UsuariosHandler",
     "/usuario/:alpha" => "UsuariosHandler",
+    "/categoria/:alpha" => "CategoriasHandler",
+    "/categoria/" => "CategoriasHandler",
 ));
 
 ?>
