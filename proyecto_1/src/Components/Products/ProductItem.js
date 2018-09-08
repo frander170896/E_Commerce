@@ -80,7 +80,8 @@ class ProductItem extends Component {
                                 <h4 className="card-title">Product</h4>
                                 <h5 className="card-subtitle mb-2">{this.props.jobtitle}</h5>
                                 <p> <i>
-                                    <strong>Location:  </strong> {this.props.job_description ? this.props.location : 'Not especified.'}
+                                    <strong>Description:  </strong>
+                                     {this.props.job_description ? this.props.job_description : 'Not especified.'}
                                 </i>
                                 </p>
                                 <p>
