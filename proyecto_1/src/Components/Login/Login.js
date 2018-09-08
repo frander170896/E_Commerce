@@ -8,7 +8,7 @@ class Login extends Component {
     super(props)
     this.state = {
       modal: false,
-      api: 'http://localhost/Proyectos/E_Commerce/server/index.php',
+      api: 'http://localhost/Proyectos/E_Commerce/server/Controlador/index.php',
       email: '',
       password: '',
       login_correcto: false
