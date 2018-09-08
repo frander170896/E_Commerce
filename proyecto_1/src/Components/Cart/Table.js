@@ -3,137 +3,77 @@ import React, { Component } from 'react'
 // Components
 
 class Table extends Component {
+  
+  constructor(props){
+    super(props);
+    this.state = {
+      Cart: JSON.parse(localStorage.Cart),
+    };
+
+  }
+  UpdateQuantity(q){
+    alert(q);
+  }
+  deleteCart(index,referencia){
+    let array = JSON.parse(localStorage.Cart)
+    array.splice(index,1)
+    referencia.setState({
+      Cart:array
+    });
+    localStorage.setItem('Cart',JSON.stringify(array))
+  }
   render () {
-    return (
-      <div className='table-responsive'>
-        <table className='table table-striped'>
-          <thead>
-            <tr>
-              <th scope='col'>
-              </th>
-              <th scope='col'>
-                Product
-              </th>
-              <th scope='col'>
-                Available
-              </th>
-              <th scope='col' className='text-center'>
-                Quantity
-              </th>
-              <th scope='col' className='text-right'>
-                Price
-              </th>
-              <th>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <img src='https://dummyimage.com/50x50/55595c/fff' />
-              </td>
-              <td>
-                Product Name Dada
-              </td>
-              <td>
-                In stock
-              </td>
-              <td>
-                <input className='form-control' type='text' value='1' />
-              </td>
-              <td className='text-right'>
-                124,90 €
-              </td>
-              <td className='text-right'>
-                <button className='btn btn-sm btn-danger'>
-                  <i className='fa fa-trash'></i>
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <img src='https://dummyimage.com/50x50/55595c/fff' />
-              </td>
-              <td>
-                Product Name Toto
-              </td>
-              <td>
-                In stock
-              </td>
-              <td>
-                <input className='form-control' type='text' value='1' />
-              </td>
-              <td className='text-right'>
-                33,90 €
-              </td>
-              <td className='text-right'>
-                <button className='btn btn-sm btn-danger'>
-                  <i className='fa fa-trash'></i>
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <img src='https://dummyimage.com/50x50/55595c/fff' />
-              </td>
-              <td>
-                Product Name Titi
-              </td>
-              <td>
-                In stock
-              </td>
-              <td>
-                <input className='form-control' type='text' value='1' />
-              </td>
-              <td className='text-right'>
-                70,00 €
-              </td>
-              <td className='text-right'>
-                <button className='btn btn-sm btn-danger'>
-                  <i className='fa fa-trash'></i>
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td>
-                Sub-Total
-              </td>
-              <td className='text-right'>
-                255,90 €
-              </td>
-            </tr>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td>
-                Shipping
-              </td>
-              <td className='text-right'>
-                6,90 €
-              </td>
-            </tr>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td>
-                <strong>Total</strong>
-              </td>
-              <td className='text-right'>
-                <strong>346,90 €</strong>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    )
+    if (this.state.Cart.length > 0) {
+      let total = 0;
+      const rows = this.state.Cart.map((producto,index) =>
+                  <tr key={index} data-item={index} >
+                      <td>{producto.nombre}</td>
+                      <td>In stock</td>
+                      <td> <input className='form-control' value="1" type='number' onChange={()=>{this.UpdateQuantity(1)}} /></td>
+                      <td>{"₡"+producto.precio}</td>
+                      <td className='text-right'>
+                        <button className='btn btn-sm btn-danger' onClick={()=>{this.deleteCart(index,this)}} >
+                          <i className='fa fa-trash'></i>
+                        </button>
+                      </td>
+                      <input type="hidden" value={total = total + parseInt(producto.precio)}></input>
+                      
+                  </tr>);
+      return (
+          <div className="card">
+              <div className="card-header">Cart</div>
+              <div className="card-body">
+                      <table className="table table-hover table table-fixed ">
+                          <thead className="thead-dark">
+                              <tr>
+                                  <th>Product</th>
+                                  <th>Available</th>
+                                  <th>Quantity</th>
+                                  <th>Price</th>
+                                  <th></th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              {rows}
+                          </tbody>
+                      </table>
+                      <table className="table table-hover table table-fixed"> 
+                        <tr>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <th>Total:</th>
+                          <td>{"₡"+total}</td>
+                          </tr>
+                      </table>         
+              </div>
+          </div>
+         
+      );
+  }
+  return(
+    <p>The car is empty</p>
+  )
   }
 }
 

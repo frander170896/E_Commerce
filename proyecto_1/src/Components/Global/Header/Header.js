@@ -7,8 +7,14 @@ import Nav from './Nav.js'
 class Header extends Component {
   constructor(props) {
     super(props);
+    let valor = 0;
+    if(typeof (localStorage.Cart) == "undefined"){
+        valor = 0;
+    }else{
+        valor = JSON.parse(localStorage.Cart).length
+    }
     this.state = {
-        AmountCart: JSON.parse(localStorage.Cart).length
+        AmountCart: valor
     };
 }
 render() {
