@@ -3,7 +3,6 @@ include_once("App.php");
 
 class Compra
 {
-
     public static function insertarCompra()
     {
         try {
@@ -17,7 +16,7 @@ class Compra
                 $stmtCompra->bindParam(':SUBTOTAL', $subTotal);
                 $stmtCompra->execute();
                 $compraId = $dbh->lastInsertId();
-                
+
                 foreach ($_POST as $result) {
                     $idArti = $result['id'];
                     $stmt = $dbh->prepare("SELECT * FROM articulos WHERE id = :id");
@@ -25,8 +24,8 @@ class Compra
                     $stmt->execute();
                     $articulo = $stmt->fetchObject();
                     if ($articulo) {
-                        $articuloId = $articulo -> id;
-                        $articuloPrecio = ($articulo -> precio);
+                        $articuloId = $articulo->id;
+                        $articuloPrecio = ($articulo->precio);
                         $subTotal = $subTotal + $articuloPrecio;
 
                         $insertArticulo = "INSERT INTO comprasarticulos (`compra`, `articulo`) VALUES (:COMPRA, :ARTICULO);";
@@ -43,7 +42,7 @@ class Compra
                 $stmtCompra->bindParam(':SUBTOTAL', $subTotal);
                 $stmtCompra->bindParam(':IDCOMPRA', $compraId);
                 $stmtCompra->execute();
-                return App::success('Se ha insertado la COMPRA con el id '. $compraId .'.');
+                return App::success('Se ha insertado la COMPRA con el id ' . $compraId . '.');
             } else {
                 return App::error("Se necesita almenos un articulo para crear una compra");
             }
@@ -51,5 +50,80 @@ class Compra
         } catch (PDOException $e) {
             return App::error($e->getMessage());
         }
+    }
+
+    public static function obtenerCompras($id = null)
+    {
+        $dbh = Conexion::getConexionPDO();
+        try {
+            if ($id == null) {
+                $stmt = $dbh->prepare("SELECT * FROM compras");
+                $stmt->execute();
+                $data = Array();
+                while ($result = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    $data[] = $result;
+                }
+                return Compra::appendArticulos($data, true);
+            } else {
+                return Compra::obtenerCompraById($id);
+            }
+        } catch (Exception $e) {
+            echo App::error($e->getMessage());
+        }
+    }
+
+    private static function obtenerCompraById($id = null)
+    {
+        $dbh = Conexion::getConexionPDO();
+        try {
+            if ($id != null) {
+                $stmt = $dbh->prepare("SELECT * FROM compras WHERE id = :id");
+                $stmt->bindParam(':id', $id);
+                $stmt->execute();
+                $articulo = $stmt->fetchObject();
+                return Compra::appendArticulos($articulo, false);
+            }
+
+        } catch (Exception $e) {
+            echo App::error($e->getMessage());
+        }
+    }
+
+    private static function obtenerCompraArticulosById($id = null)
+    {
+        $dbh = Conexion::getConexionPDO();
+        try {
+            if ($id != null) {
+                $stmt = $dbh->prepare("SELECT * FROM comprasarticulos WHERE compra = :id");
+                $stmt->bindParam(':id', $id);
+                $stmt->execute();
+                $data = Array();
+                while ($result = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    $data[] = $result;
+                }
+                return $data;
+            }
+
+        } catch (Exception $e) {
+            echo App::error($e->getMessage());
+        }
+    }
+
+    private static function appendArticulos($data = null, $bandera = false)
+    {
+        $data = (array)$data;
+        $tam = count($data);
+        if($bandera) {
+            for ($row = 0; $row < $tam; $row++) {
+                $idCompra = $data[$row]['id'];
+                $arrayArticulos = Compra::obtenerCompraArticulosById($idCompra);
+                $data[$row]["articulos"] = $arrayArticulos;
+            }
+        } else {
+            $idCompra = $data['id'];
+            $arrayArticulos = Compra::obtenerCompraArticulosById($idCompra);
+            $data["articulos"] = $arrayArticulos;
+        }
+        echo json_encode($data);
     }
 }
