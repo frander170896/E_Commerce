@@ -7,18 +7,17 @@ class Compra
     public static function insertarCompra()
     {
         try {
-            $dbh = Conexion::getConexionPDO();
-            $total = 0;
-            $subTotal = 0;
-            $insertCompra = "INSERT INTO compras (`total`, `subtotal`, `estado`) VALUES (:TOTAL, :SUBTOTAL, '1');";
-            $stmtCompra = $dbh->prepare($insertCompra);
-            $stmtCompra->bindParam(':TOTAL', $total);
-            $stmtCompra->bindParam(':SUBTOTAL', $subTotal);
-            $stmtCompra->execute();
-            $compraId = $dbh->lastInsertId();
-
             if (!empty($_POST)) {
-                //
+                $dbh = Conexion::getConexionPDO();
+                $total = 0;
+                $subTotal = 0;
+                $insertCompra = "INSERT INTO compras (`total`, `subtotal`, `estado`) VALUES (:TOTAL, :SUBTOTAL, '1');";
+                $stmtCompra = $dbh->prepare($insertCompra);
+                $stmtCompra->bindParam(':TOTAL', $total);
+                $stmtCompra->bindParam(':SUBTOTAL', $subTotal);
+                $stmtCompra->execute();
+                $compraId = $dbh->lastInsertId();
+                
                 foreach ($_POST as $result) {
                     $idArti = $result['id'];
                     $stmt = $dbh->prepare("SELECT * FROM articulos WHERE id = :id");
@@ -45,6 +44,8 @@ class Compra
                 $stmtCompra->bindParam(':IDCOMPRA', $compraId);
                 $stmtCompra->execute();
                 return App::success('Se ha insertado la COMPRA con el id '. $compraId .'.');
+            } else {
+                return App::error("Se necesita almenos un articulo para crear una compra");
             }
 
         } catch (PDOException $e) {
