@@ -3,18 +3,17 @@ include_once("../Modelo/Entidades/Compra.php");
 
 class ComprasHandler
 {
-    function get($usuPass = null)
+    function get($id = null)
     {
-//        try {
-//            if ($usuPass != null) {
-//                $split = explode("-", $usuPass);
-//                $username = $split[0];
-//                $pass = (string)$split[1];
-//                return Usuario::obtenerUsuario($username, $pass);
-//            }
-//        } catch (Exception $e) {
-//            echo App::error($e->getMessage());
-//        }
+        try {
+            if ($id != null) {
+                return Compra::obtenerCompras($id);
+            } else {
+                return Compra::obtenerCompras();
+            }
+        } catch (Exception $e) {
+            echo "Failed: " . $e->getMessage();
+        }
     }
 
     function post()
