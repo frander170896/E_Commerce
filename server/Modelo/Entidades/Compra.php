@@ -6,7 +6,7 @@ class Compra
     public static function insertarCompra()
     {
         try {
-            if (!empty($_POST)) {
+            if (isset($_POST)) {
                 $dbh = Conexion::getConexionPDO();
                 $total = 0;
                 $subTotal = 0;

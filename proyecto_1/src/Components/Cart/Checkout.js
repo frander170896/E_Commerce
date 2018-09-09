@@ -12,49 +12,60 @@ class Checkout extends Component {
       password: '',
       login_correcto: false
     }
-
+    this.recargar = this.recargar.bind(this)
     this.toggle = this.toggle.bind(this)
    
   }
+  ObtenerArrayId(){
+    let array = JSON.parse(localStorage.Cart);
+    let resultado = []
+   
+    for(var i = 0; i< array.length; i++){
+        resultado.push({id:array[i].id});
+    }
+    
+    console.log(resultado);
+    return  JSON.stringify(resultado)
+  }
+  recargar(){
+    localStorage.removeItem("Cart");
+    this.toggle();
+    window.location.reload();
+  }
 
-  Guardar () {
+  Guardar (referencia) {
+    let array = referencia.ObtenerArrayId();
     var url = this.state.api +
-    '/usuario/' + this.state.email + '-' + this.state.password
-    try {
-      fetch(url)
-        .then((response) => {
-          return response.json()
-        })
-        .then((data) => {
-          if (data) {
-            if (data.code != 401) {
-              let Cart = []
-              localStorage.setItem('loginUser', data.EMAIL)
-              // localStorage.setItem("tipo_usuario", data.TIPO_USUARIO)
-              localStorage.setItem('loggedUser', JSON.stringify(data))
-              localStorage.setItem('Cart', JSON.stringify(Cart))
-              window.location = '/Products'
-              this.toggle()
-              this.forceUpdate()
-            }else {
-              localStorage.setItem('loginUser', 'NULL')
-              document.getElementById('alerta').innerHTML =
-                '<p class="alert alert-danger"><small>Credenciales incorrectas, intente de nuevo</small><p>'
-              document.body.scrollTop = 0 // For Safari
-              document.documentElement.scrollTop = 0 //
-            }
-          } else {
-            localStorage.setItem('loginUser', 'NULL')
-            document.getElementById('alerta').innerHTML =
-              '<p class="alert alert-danger"><small>Credenciales incorrectas, intente de nuevo</small><p>'
+    '/compra/'
+    console.log(array)
+   
+      fetch(url,{
+        method: "post",
+        headers: {'Content-Type': 'application/json'},
+        body: array
+    
+      }).then((response) => response.json())
+      .then((data) => {
+        console.log(data)
+        console.log(data.code)
+        if (data.code == '200') {
+          document.getElementById('alerta').innerHTML =
+          '<p class="alert alert-success"><small>Proceso completado correctamente</small><p>'
             document.body.scrollTop = 0 // For Safari
             document.documentElement.scrollTop = 0 //
-          }
-        })
-    } catch(err) {
-      document.getElementById('alerta').innerHTML =
-        err.message
-    }
+            setTimeout(this.recargar, 3000);
+            
+            
+          
+        } else {
+         
+        }
+      })
+      .catch((error) => {
+          document.getElementById('alerta').innerHTML =
+          '<p class="alert alert-success"><small>'+error+'</small><p>'
+      })
+      
   }
 
   toggle () {
@@ -119,11 +130,15 @@ class Checkout extends Component {
                     </div>
                     </div>
                     <div className='form-row'>
+                    
                         <div className='col-md-12 form-group'>
-                            <button className='form-control btn btn-primary submit-button' onClick={this.Guardar}>Pay »</button>
+                            <div id='alerta'></div>
+                            <button className='form-control btn btn-primary submit-button' onClick={()=>{this.Guardar(this)}}>Pay »</button>
                         </div>
+                        
                     </div>
                 </form>
+                
         </div>
           </ModalBody>
           <ModalFooter>

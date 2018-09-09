@@ -31,7 +31,7 @@ class ProductList extends Component {
   }
   saveCartLocalStorage(Aritculo){
     let articulo = JSON.parse(Aritculo)
-    let cart = JSON.parse(localStorage.Cart)
+    let cart = localStorage.Cart?JSON.parse(localStorage.Cart):[]
     console.log(cart)
     if(!this.existInCart(cart,articulo)){
       cart.push({id: articulo.id,nombre:articulo.nombre,descripcion: articulo.descripcion,precio : articulo.precio,creado: articulo.creado});

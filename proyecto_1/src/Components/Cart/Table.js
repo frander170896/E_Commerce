@@ -7,7 +7,7 @@ class Table extends Component {
   constructor(props){
     super(props);
     this.state = {
-      Cart: JSON.parse(localStorage.Cart),
+      Cart: localStorage.Cart?JSON.parse(localStorage.Cart):[],
       showCheckOut: true
     };
 
