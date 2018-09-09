@@ -111,9 +111,9 @@ class Categorias extends Component {
   render() {
     return (
       <div className="row jobs">
-        <div className="col-ms-4 col-md-3 col-lg-2" >
-          <div>
-            <label>Select Category</label>
+        <div className="col-ms-4 col-md-3 col-lg-2 mt-3" >
+          <div className='ml-3 mt-3'>
+            <label><strong>Select Category</strong></label>
             <select id='ubicacion' required className="custom-select" onChange={this.filterCategory}>
               <option value='All'>All Categories</option>
                   {this.state.categorias.map((item, key) =>
