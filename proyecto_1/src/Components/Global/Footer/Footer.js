@@ -14,15 +14,15 @@ class Footer extends Component {
                             Desde los años 30 hemos sido participe de la vida de los costarricenses... 
                         </p>
                     </div>
-                    <div className="col-md-3 col-lg-2 col-xl-2 mx-auto">
-                        <h5>Navigation</h5>
+
+                    <div className="col-md-2 col-lg-2 col-xl-2 mx-auto">
+                        <h5>Menu</h5>
                         <hr className="bg-white mb-2 mt-0 d-inline-block mx-auto w-25"></hr>
                         <ul className="list-unstyled">
-                            <li><a href="/cart">Cart</a></li>
-                            
-                            <li><a href="/Products">Products</a></li>
-                            <li><a href="/Register">Register</a></li>
-                            <li><a href="/about_us">About</a></li>
+                            <li><a href="">Home</a></li>
+                            <li><a href="">Products</a></li>
+                            <li><a href="">Categories </a></li>
+                            <li><a href="">Link 4</a></li>
                         </ul>
                     </div>
 
@@ -30,20 +30,17 @@ class Footer extends Component {
                         <h5>Contact</h5>
                         <hr className="bg-white mb-2 mt-0 d-inline-block mx-auto w-25"></hr>
                         <ul className="list-unstyled">
-                            <li><i className="fa fa-home mr-2"></i> Frander</li>
-                            <li><i className="fa fa-envelope mr-2"></i> frander@gmail.com</li>
-                            <li><i className="fa fa-home mr-2"></i> Gerson</li>
-                            <li><i className="fa fa-envelope mr-2"></i> Gerson@gmail.com</li>
-                            <li><i className="fa fa-home mr-2"></i> David</li>
-                            <li><i className="fa fa-envelope mr-2"></i> David@gmail.com</li>
+                            <li><i className="fa fa-home mr-2"></i> My company</li>
+                            <li><i className="fa fa-envelope mr-2"></i> email@example.com</li>
+                            <li><i className="fa fa-phone mr-2"></i> + 33 12 14 15 16</li>
+                            <li><i className="fa fa-print mr-2"></i> + 33 12 14 15 16</li>
                         </ul>
                     </div>
                     <div className="col-12 copyright mt-3">
                         <p className="float-left">
                             <a href="#">Back to top</a>
                         </p>
-                        <p className="text-right text-muted">created with 
-                         by Us <span>v. 1.0</span></p>
+                        <p className="text-right text-muted">created with <i className="fa fa-heart"></i> by <a href="https://t-php.fr/43-theme-ecommerce-bootstrap-4.html"><i>t-php</i></a> | <span>v. 1.0</span></p>
                     </div>
                 </div>
             </div>
