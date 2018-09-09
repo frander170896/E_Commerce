@@ -66,7 +66,8 @@ class Register extends Component {
           }
         })
         .catch((error) => {
-          console.log(error)
+            document.getElementById('alerta').innerHTML =
+            '<p class="alert alert-success"><small>'+error+'</small><p>'
         })
     }
   }
