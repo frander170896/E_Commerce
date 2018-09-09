@@ -7,28 +7,25 @@ class Footer extends Component {
             <div className="container">
                 <div className="row">
                     <div className="col-md-3 col-lg-4 col-xl-3">
-                        <h5>About</h5>
+                        <a href="/about_us"><h5>About</h5></a>
                         <hr className="bg-white mb-2 mt-0 d-inline-block mx-auto w-25"></hr>
                         <p className="mb-0">
-                            Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.
+                            Somos una empresa consolidada en el mercado nacional desde hace más de 80 años. 
+                            Desde los años 30 el Centro Sport ha sido participe de la vida de los costarricenses... 
                         </p>
                     </div>
-
-                   
 
                     <div className="col-md-3 col-lg-2 col-xl-2 mx-auto">
                         <h5>Navigation</h5>
                         <hr className="bg-white mb-2 mt-0 d-inline-block mx-auto w-25"></hr>
                         <ul className="list-unstyled">
-                            <li><a href="/cart">Cart</a></li>
-                            
+                            <li><a href="/home">Home</a></li>
                             <li><a href="/Products">Products</a></li>
+                            <li><a href="/categorias">Categories</a></li>
+                            <li><a href="/contact">Contact</a></li>
                             <li><a href="/Register">Register</a></li>
-                            <li><a href="/about_us">About</a></li>
+                            <li><a href="/cart">Cart</a></li>
                         </ul>
-
-                         
-
 
                     </div>
 

@@ -17,7 +17,7 @@ class Nav extends Component {
     return (
       <nav className='navbar navbar-expand-md navbar-dark bg-dark'>
         <div className='container'>
-          <a className='navbar-brand' href='index.html'>E-commerce</a>
+          <a className='navbar-brand' href='/home'>E-commerce</a>
           <button
             className='navbar-toggler'
             type='button'
