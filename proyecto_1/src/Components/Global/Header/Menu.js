@@ -6,23 +6,23 @@ class Menu extends Component {
         <div className="collapse navbar-collapse justify-content-end" id="navbarsExampleDefault">
             <ul className="navbar-nav m-auto">
                 <li className="nav-item m-auto">
-                    <a className="nav-link active" href="/Home">Home</a>
+                    <a className="nav-link active" activeClassName="active" activeStyle={{ color: 'blue' }} href="/Home">Home</a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" href="/Products">Products</a>
+                    <a className="nav-link" activeClassName="active" activeStyle={{ color: 'blue' }} href="/Products">Products</a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" href="/categorias">Categories</a>
+                    <a className="nav-link" activeClassName="active" activeStyle={{ color: 'blue' }} href="/categorias">Categories</a>
                 </li>
                 
                 <li className="nav-item">
-                    <a className="nav-link" href="/contact">Contact</a>
+                    <a className="nav-link" activeClassName="active" activeStyle={{ color: 'blue' }} href="/contact">Contact</a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" href="/about_us">About us</a>
+                    <a className="nav-link" activeClassName="active" activeStyle={{ color: 'blue' }} href="/about_us">About us</a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" href="/Register">Register</a>
+                    <a className="nav-link" activeClassName="active" activeStyle={{ color: 'blue' }} href="/Register">Register</a>
                 </li>
             </ul>
         </div>
