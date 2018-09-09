@@ -22,7 +22,7 @@ class UsuariosHandler
             if ($_POST['metodo'] == 'login') {
                // return Login::obtenerusuario('gerson@gmail.com', 'admin123');
             } else if ($_POST['metodo'] == 'insertarUsuario') {
-                return Usuario::insertarUsuario($username, $pass);
+                return Usuario::insertarUsuario($_POST);
             } 
 
         } catch (Exception $e) {

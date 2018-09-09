@@ -42,7 +42,6 @@ id bigint(20) NOT NULL AUTO_INCREMENT,
 usuario varchar(255) DEFAULT NULL,
 contra varchar(255) DEFAULT NULL,
 nombrecompleto varchar(255),
-username varchar(255),
 gender int,
 email varchar(255),
 PRIMARY KEY (id)

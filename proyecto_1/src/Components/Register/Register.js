@@ -8,12 +8,13 @@ class Register extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      api: 'http://localhost:8098/Proyectos/E_Commerce/server/Controlador/index.php',
+      api: 'http://localhost:8098/Proyectos/E_Commerce/server/Controlador/index.php/usuario/',
       email: '',
       password: '',
       password2: '',
       full_name: '',
-      user_name: ''
+      user_name: '',
+      gender: '0'
     }
     this.handleCreateAccount = this.handleCreateAccount.bind(this)
     this.handleEmail = this.handleEmail.bind(this)
@@ -21,6 +22,7 @@ class Register extends Component {
     this.handleValidarPass = this.handleValidarPass.bind(this)
     this.handleNombre = this.handleNombre.bind(this)
     this.handleTipoUsuario = this.handleTipoUsuario.bind(this)
+    this.handleUserName = this.handleUserName.bind(this)
   }
   componentWillMount () {
     document.title = 'Register'
@@ -37,10 +39,14 @@ class Register extends Component {
     } else {
       var data1 = JSON.stringify({
         metodo: 'insertarUsuario',
-        metodo: 'insertarUsuario',
+        contra: this.state.password,
+        nombrecompleto: this.state.full_name,
+        usuario: this.state.user_name,
+        gender: this.state.gender,
+        email: this.state.email
       })
-
-      fetch(this.state.api+'/usuario', {
+      console.log(data1)
+      fetch(this.state.api, {
         method: 'post',
         headers: {'Content-Type': 'application/json'},
         body: data1
@@ -125,10 +131,10 @@ class Register extends Component {
           <h1>Registro</h1>
           <img src={register_img} alt='Register' />
           <p>
-            Al regístrate en nuestro sitio usted obtendrá múltiples beneficios referentes a nuestros productos, podrás analizar diferentes ofertas de trabajo
-            que se ofrecen y ser postulantes de las mismas directamente. Actualmente se encuentra puestos de trabajo en la mayoría de las áreas lo cual ayudaría a obtener
-            mayores posibilidades de empleo. Además, puede obtener información directamente del sitio de la pagina la que quieras postular. Los usuarios tendrán múltiple
-            opciones de filtrado según sus necesidades o su áreas especifica de preferencias lo que le permite tener opciones mas especificas acorde a su experiencia y estudios.
+            Al regístrate en nuestro sitio usted obtendrá múltiples beneficios referentes a nuestros productos, podrás analizar diferentes ofertas de trabajo que se ofrecen
+            y ser postulantes de las mismas directamente. Actualmente se encuentra puestos de trabajo en la mayoría de las áreas lo cual ayudaría a obtener mayores posibilidades
+            de empleo. Además, puede obtener información directamente del sitio de la pagina la que quieras postular. Los usuarios tendrán múltiple opciones de filtrado
+            según sus necesidades o su áreas especifica de preferencias lo que le permite tener opciones mas especificas acorde a su experiencia y estudios.
           </p>
         </div>
         <div className='col-xs-12 col-sm-12 col-md-6 col-lg-6'>
@@ -189,7 +195,7 @@ class Register extends Component {
                       type='email'
                       placeholder='Email'
                       required
-                      onClick={this.handleEmail} />
+                      onChange={this.handleEmail} />
                   </div>
                 </div>
                 <div className='row'>
@@ -198,7 +204,7 @@ class Register extends Component {
                       className='form-control'
                       type='password'
                       placeholder='Password'
-                      onClick={this.handlePass} 
+                      onChange={this.handlePass}
                       required/>
                   </div>
                 </div>
@@ -208,31 +214,31 @@ class Register extends Component {
                       className='form-control'
                       type='password'
                       placeholder='Confirm Password'
-                      onClick={this.handleValidarPass} 
+                      onChange={this.handleValidarPass}
                       required/>
                   </div>
                 </div>
-                {
-                    /*
+                {/*
+                                                <div className='row'>
+                                                  <div className='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
+                                                    <div className='custom-file'>
+                                                      <input
+                                                        type='file'
+                                                        className='custom-file-input'
+                                                        name='file'
+                                                        required/>
+                                                      <label className='custom-file-label' htmlFor='customFile'>
+                                                        Attach CV
+                                                      </label>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                */}
                 <div className='row'>
                   <div className='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
-                    <div className='custom-file'>
-                      <input
-                        type='file'
-                        className='custom-file-input'
-                        name='file'
-                        required/>
-                      <label className='custom-file-label' htmlFor='customFile'>
-                        Attach CV
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                */
-                }
-                <div className='row'>
-                  <div className='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
-                    <button className='btn btn-primary' type='button' name='finalize'>
+                  <div id='alerta'></div>
+                    <button className='btn btn-primary' type='button' name='finalize'
+                    onClick={this.handleCreateAccount}>
                       Create account
                     </button>
                   </div>
