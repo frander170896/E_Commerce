@@ -83,7 +83,7 @@ class CardGroup extends Component {
                                usuario={this.state.anuard}
                                red_social={'https://www.facebook.com'}
                                trabajo_git={'https://github.com/depm1992'}
-                               about_me={'I am working and studying at UNA.'} /> : ''}
+                               about_me={'I am working as full stack developer and studying a degree at UNA.'} /> : ''}
       </div>
     )
   }
