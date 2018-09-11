@@ -57,15 +57,25 @@ CREATE TABLE `categoria` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `implementosdeportivos`.`articulos` (`precio`, `descripcion`, `nombre`, `estado`,`cantidad`, `imagen`)
- VALUES ('1000', 'Art1 desc', 'Art1', '1',2,'/server/imagenes/a3.jpg');
+ VALUES ('20000', 'This is a perfect baseball element, you can use anywhere.', 'Baseball Glove', '1',2,'/server/imagenes/guantebeisball.jpg');
+
 INSERT INTO `implementosdeportivos`.`articulos` (`precio`, `descripcion`, `nombre`, `estado`,`cantidad`, `imagen`)
-VALUES ('2000', 'Art2 desc', 'Art2', '1',3,'/server/imagenes/a2.jpg');
+VALUES ('10000', 'Soccer ball, perfect for your match', 'Soccer Ball', '1',3,'/server/imagenes/balon.jpg');
+
 INSERT INTO `implementosdeportivos`.`articulos` (`precio`, `descripcion`, `nombre`, `estado`,`cantidad`, `imagen`)
-VALUES ('3000', 'Art3 desc', 'Art3', '1',1,'/server/imagenes/a1.jpg');
+VALUES ('17000', 'Chelseas uniform', 'Chelseas Uniform', '1',1,'/server/imagenes/chelseauniform.png');
+
+INSERT INTO `implementosdeportivos`.`articulos` (`precio`, `descripcion`, `nombre`, `estado`,`cantidad`, `imagen`)
+VALUES ('11000', 'Colombias tshirt, cotton', 'Colombia', '1',1,'/server/imagenes/chelseauniform.png');
+
+INSERT INTO `implementosdeportivos`.`articulos` (`precio`, `descripcion`, `nombre`, `estado`,`cantidad`, `imagen`)
+VALUES ('8000', 'Espinilleras, for soccer', 'Espinilleras', '1',1,'/server/imagenes/espinilleras.jpg');
+
 
 INSERT INTO `implementosdeportivos`.`categoria` (`ARTICULO_ID`, `CATEGORY_NAME`) 
 VALUES (1, 'Individuales');
+
 INSERT INTO `implementosdeportivos`.`categoria` (`ARTICULO_ID`, `CATEGORY_NAME`) 
 VALUES (2, 'Combos');
 
-INSERT INTO `implementosdeportivos`.`usuarios` (`usuario`, `contra`) VALUES ('david', '123');
+--INSERT INTO `implementosdeportivos`.`usuarios` (`usuario`, `contra`) VALUES ('david', '123');

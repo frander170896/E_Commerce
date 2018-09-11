@@ -1,7 +1,10 @@
 // Dependencies
 import React, { Component } from 'react';
-import axios from 'axios';
+
 import Bag from "../Global/images/shoppingbag.png";
+import imagen1 from "../Global/images/chelseauniform.png";
+import imagen2 from "../Global/images/camisacolombia.jpg";
+import imagen3 from "../Global/images/balonvolleyball.jpg";
 class Card extends Component {
   constructor(props) {
     super(props);
@@ -24,7 +27,7 @@ class Card extends Component {
         <div className="card-footer">
           <small className="text-muted">
 
-            <a className='btn btn-primary' target="_blank" href={'www.google.com'}> Buy product
+            <a className='btn btn-primary' target="_blank" href={this.state.company_url}> Buy product
               <img className="rounded" src={Bag} alt="Card image cap" />
             </a>
           </small>
@@ -47,19 +50,19 @@ class CardGroup extends Component {
       <div className="card-group p-3">
 
         <Card
-          company_name={'Loreal'}
-          company_logo={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6vep4B0sLW91yey4smjbRIemh4roKE8n5l1xQkuDaX9zQKiYv'}
-          company_url={'https://www.microsoft.com'}
+          company_name={'Chelsea Uniform'}
+          company_logo={imagen1}
+          company_url={'/Products'}
         />
         <Card
-          company_name={'Cardio Aspirine'}
-          company_logo={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0Ujgmt1bnOqPvhhejMfksoI5MZpjM_pTEcBJBYUFz58f-CdgA'}
-          company_url={'https://www.apple.com/'}
+          company_name={'Colombia shirt'}
+          company_logo={imagen2}
+          company_url={'/Products'}
         />
         <Card
-          company_name={'Vendatek'}
-          company_logo={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeuxRp6YurZXqNKV9YRDoJ1USWplFQvZADl072LQlgqKLSm2_2'}
-          company_url={'https://www.bolttoken.org/'}
+          company_name={'Volleyball ball'}
+          company_logo={imagen3}
+          company_url={'/Products'}
         />
       </div>
     )
