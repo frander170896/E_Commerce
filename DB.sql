@@ -57,11 +57,11 @@ CREATE TABLE `categoria` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `implementosdeportivos`.`articulos` (`precio`, `descripcion`, `nombre`, `estado`,`cantidad`, `imagen`)
- VALUES ('1000', 'Art1 desc', 'Art1', '1',2,'server/imagenes/a3.jpg');
-INSERT INTO `implementosdeportivos`.`articulos` (`precio`, `descripcion`, `nombre`, `estado`,`cantidad`) 
-VALUES ('2000', 'Art2 desc', 'Art2', '1',3);
-INSERT INTO `implementosdeportivos`.`articulos` (`precio`, `descripcion`, `nombre`, `estado`,`cantidad`) 
-VALUES ('3000', 'Art3 desc', 'Art3', '1',1);
+ VALUES ('1000', 'Art1 desc', 'Art1', '1',2,'/server/imagenes/a3.jpg');
+INSERT INTO `implementosdeportivos`.`articulos` (`precio`, `descripcion`, `nombre`, `estado`,`cantidad`, `imagen`)
+VALUES ('2000', 'Art2 desc', 'Art2', '1',3,'/server/imagenes/a2.jpg');
+INSERT INTO `implementosdeportivos`.`articulos` (`precio`, `descripcion`, `nombre`, `estado`,`cantidad`, `imagen`)
+VALUES ('3000', 'Art3 desc', 'Art3', '1',1,'/server/imagenes/a1.jpg');
 
 INSERT INTO `implementosdeportivos`.`categoria` (`ARTICULO_ID`, `CATEGORY_NAME`) 
 VALUES (1, 'Individuales');
