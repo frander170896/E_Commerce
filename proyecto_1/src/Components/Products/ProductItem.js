@@ -80,7 +80,7 @@ class ProductItem extends Component {
                                     <i><strong>Job Type:  </strong> {"₡"+this.props.precio}</i>
                                 </p>
                                 <p>
-                                    <i><strong>Unidades:  </strong> {this.props.cantidad}</i>
+                                    <i><strong>Items:  </strong> {this.props.cantidad}</i>
                                 </p>
                                 <p className="card-text">
                                 <i><strong>Last Modified:  </strong> {this.props.creado}</i>

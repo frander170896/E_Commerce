@@ -41,6 +41,7 @@ class ProductList extends Component {
   }
   handleClickAddCart (data) {
     this.saveCartLocalStorage(data);
+    window.location.reload()
   // aqui se debe de llamar el metodo que consume el web service con el fin de que envie los datos del articulo seleccionado y lo agregue a la variable de session.
   }
   filterList (event) {

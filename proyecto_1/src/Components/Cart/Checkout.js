@@ -1,7 +1,7 @@
 // Dependencies
 import React, { Component } from 'react'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
-
+import Credit from '../Global/icons/credit.jpg'
 class Checkout extends Component {
   constructor (props) {
     super(props)
@@ -14,31 +14,30 @@ class Checkout extends Component {
     }
     this.recargar = this.recargar.bind(this)
     this.toggle = this.toggle.bind(this)
-   
+    this.Guardar=this.Guardar.bind(this)
   }
   ObtenerArrayId(){
-    let array = JSON.parse(localStorage.Cart);
+    let array = localStorage.Cart?JSON.parse(localStorage.Cart):[]
     let resultado = []
    
     for(var i = 0; i< array.length; i++){
         resultado.push({id:array[i].id});
     }
     
-    console.log(resultado);
+    //console.log(resultado);
     return  JSON.stringify(resultado)
   }
   recargar(){
-    localStorage.removeItem("Cart");
+    
     this.toggle();
     window.location.reload();
   }
 
-  Guardar (referencia) {
-    let array = referencia.ObtenerArrayId();
+  Guardar () {
+    localStorage.removeItem("Cart");
+    let array = this.ObtenerArrayId();
     var url = this.state.api +
     '/compra/'
-    console.log(array)
-   
       fetch(url,{
         method: "post",
         headers: {'Content-Type': 'application/json'},
@@ -46,19 +45,20 @@ class Checkout extends Component {
     
       }).then((response) => response.json())
       .then((data) => {
-        console.log(data)
-        console.log(data.code)
+        
         if (data.code == '200') {
           document.getElementById('alerta').innerHTML =
           '<p class="alert alert-success"><small>Proceso completado correctamente</small><p>'
             document.body.scrollTop = 0 // For Safari
             document.documentElement.scrollTop = 0 //
-            setTimeout(this.recargar, 3000);
+            
+            this.toggle();
+            window.location.reload();
             
             
           
         } else {
-         
+          //alert(data.msj)
         }
       })
       .catch((error) => {
@@ -91,6 +91,8 @@ class Checkout extends Component {
           <div className='container'>
                 <form >
                     <div className='row'>
+                    
+                    <img src={Credit} alt='Register' />
                         <div className='col-xs-12 col-sm-12 col-md-12 form-group required'>
                             <label className='control-label'>Name on Card</label>
                             <select className='form-control' type='text'>
@@ -133,7 +135,7 @@ class Checkout extends Component {
                     
                         <div className='col-md-12 form-group'>
                             <div id='alerta'></div>
-                            <button className='form-control btn btn-primary submit-button' onClick={()=>{this.Guardar(this)}}>Pay »</button>
+                            <button className='form-control btn btn-primary submit-button' onClick={this.Guardar}>Pay »</button>
                         </div>
                         
                     </div>

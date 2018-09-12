@@ -7,7 +7,7 @@ class Search extends Component {
     super(props)
     this.state = {
       showLogin: true,
-      usuario: JSON.parse(localStorage.loggedUser)
+      usuario: localStorage.loggedUser?JSON.parse(localStorage.loggedUser):[]
     }
     this.handleShowLogin = this.handleShowLogin.bind(this)
   }
