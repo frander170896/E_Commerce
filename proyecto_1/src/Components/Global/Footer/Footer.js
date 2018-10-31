@@ -19,12 +19,12 @@ class Footer extends Component {
                         <h5>Navigation</h5>
                         <hr className="bg-white mb-2 mt-0 d-inline-block mx-auto w-25"></hr>
                         <ul className="list-unstyled">
-                            <li><a href="/home">Home</a></li>
-                            <li><a href="/Products">Products</a></li>
+                            <li><a href="/home">Inicio</a></li>
+                            <li><a href="/Products">Productos</a></li>
                             <li><a href="/categorias">Categories</a></li>
-                            <li><a href="/contact">Contact</a></li>
-                            <li><a href="/Register">Register</a></li>
-                            <li><a href="/cart">Cart</a></li>
+                            <li><a href="/contact">Contacto</a></li>
+                            <li><a href="/Register">Registrarse</a></li>
+                            <li><a href="/cart">Carrito</a></li>
                         </ul>
 
                     </div>
@@ -45,8 +45,7 @@ class Footer extends Component {
                         <p className="float-left">
                             <a href="#">Back to top</a>
                         </p>
-                        <p className="text-right text-muted">created with 
-                         by Us <span>v. 1.0</span></p>
+                        <p className="text-right text-muted">Desarrollo UNA 2018 <span>v. 1.0</span></p>
                     </div>
                 </div>
             </div>

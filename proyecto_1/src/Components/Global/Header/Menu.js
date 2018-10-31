@@ -6,23 +6,25 @@ class Menu extends Component {
         <div className="collapse navbar-collapse justify-content-end" id="navbarsExampleDefault">
             <ul className="navbar-nav m-auto">
                 <li className="nav-item m-auto">
-                    <a className="nav-link active" activeClassName="active" activeStyle={{ color: 'blue' }} href="/Home">Home</a>
+                    <a className="nav-link active" activeClassName="active" activeStyle={{ color: 'blue' }} href="/Home">Inicio</a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" activeClassName="active" activeStyle={{ color: 'blue' }} href="/Products">Products</a>
+                    <a className="nav-link" activeClassName="active" activeStyle={{ color: 'blue' }} href="/Products">Productos</a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" activeClassName="active" activeStyle={{ color: 'blue' }} href="/categorias">Categories</a>
-                </li>
-                
-                <li className="nav-item">
-                    <a className="nav-link" activeClassName="active" activeStyle={{ color: 'blue' }} href="/contact">Contact</a>
+                    <a className="nav-link" activeClassName="active" activeStyle={{ color: 'blue' }} href="/categorias">Categorias</a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" activeClassName="active" activeStyle={{ color: 'blue' }} href="/about_us">About us</a>
+                    <a className="nav-link" activeClassName="active" activeStyle={{ color: 'blue' }} href="/categorias">Noticias</a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" activeClassName="active" activeStyle={{ color: 'blue' }} href="/Register">Register</a>
+                    <a className="nav-link" activeClassName="active" activeStyle={{ color: 'blue' }} href="/contact">Contactenos</a>
+                </li>
+                <li className="nav-item">
+                    <a className="nav-link" activeClassName="active" activeStyle={{ color: 'blue' }} href="/about_us">Sobre Nosotros</a>
+                </li>
+                <li className="nav-item">
+                    <a className="nav-link" activeClassName="active" activeStyle={{ color: 'blue' }} href="/Register">Registrarse</a>
                 </li>
             </ul>
         </div>

@@ -26,6 +26,7 @@ const AppRoutes = () =>
       <Route exact path="/about_us" component={About} />
       <Route exact path="/Products" component={ProductList} />
       <Route exact path="/categorias" component={Categorias} />
+      <Route exact path="/News" component={Categorias} />
       <Route exact path="/Register" component={Register} />
       <Route exact path="/Login" component={Login} />
     </Switch>
