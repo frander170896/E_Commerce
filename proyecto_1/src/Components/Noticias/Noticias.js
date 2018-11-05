@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import NoticiaItem from './NoticiaItem'
 import Lupa from '../Global/images/lupa.png'
+import NoticiasForm from './NoticiasForm';
 
 class Noticias extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            showLogin: true,
             server_url: 'http://localhost:8098/Proyectos/E_Commerce/',
             api: 'http://localhost:8098/Proyectos/E_Commerce/server/Controlador/index.php',
             Cart: [],
@@ -18,7 +20,11 @@ class Noticias extends Component {
         this.handleClickAddCart = this.handleClickAddCart.bind(this)
         this.componentWillMount = this.componentWillMount.bind(this)
         this.filterList = this.filterList.bind(this)
+        this.handleShowLogin = this.handleShowLogin.bind(this)
         // console.log(this.state.jobs[0])
+    }
+    handleShowLogin() {
+        this.setState({ showLogin: true })
     }
     existInCart(cart, articulo) {
         let existe = false
@@ -57,7 +63,7 @@ class Noticias extends Component {
     }
     componentWillMount() {
         var url = this.state.api +
-            '/implDeport/'
+            '/noticia/'
         try {
             fetch(url)
                 .then((response) => {
@@ -76,16 +82,23 @@ class Noticias extends Component {
     render() {
         return (
             <div>
-                <h2 className='ml-3 mt-3'>Available products</h2>
-                <div className='input-group-prepend m-3'>
-                    <span className='input-group-text' id='inputGroup-sizing-default'><img src={Lupa} /></span>
-                    <input
-                        className='form-control'
-                        aria-label='Default'
-                        aria-describedby='inputGroup-sizing-default'
-                        type='text'
-                        placeholder='Search'
-                        onChange={this.filterList} />
+                <h2 className='ml-3 mt-3'>Noticias:</h2>
+                <div className='row'>
+                    <div className="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                        <div className='input-group-prepend mb-2'>
+                            <span className='input-group-text' id='inputGroup-sizing-default'><img src={Lupa} /></span>
+                            <input
+                                className='form-control'
+                                aria-label='Default'
+                                aria-describedby='inputGroup-sizing-default'
+                                type='text'
+                                placeholder='Search'
+                                onChange={this.filterList} />
+                        </div>
+                    </div>
+                    <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                        <NoticiasForm />
+                    </div>
                 </div>
                 {!this.state.productos && !this.state.isfiltrado ?
                     <div className="alert alert-primary" role="alert">
@@ -95,33 +108,19 @@ class Noticias extends Component {
                     !this.state.isfiltrado && !this.state.datosFiltrados ?
                         this.state.productos.map(elemento => <div key={elemento.id}>
                             <NoticiaItem
-                                jobtitle={elemento.nombre}
-                                //id: "1", precio: "1000", descripcion: "Art1 desc", nombre: "Art1", estado: "1"
-                                nombre={elemento.nombre}
-                                precio={elemento.precio}
-                                cantidad={elemento.cantidad}
-                                descripcion={elemento.descripcion}
-                                server_url={this.state.server_url}
-                                imagen={elemento.imagen}
-                                creado={elemento.fecha_registro}
-                                id={elemento.id}
-                                evento={this.handleClickAddCart} />
+                                NOTICIA_ID={elemento.NOTICIA_ID}
+                                DESCRIPCION={elemento.DESCRIPCION}
+                                FECHA={elemento.FECHA}
+                                TOPIC={elemento.TOPIC} />
                         </div>
                         )
                         :
                         this.state.datosFiltrados.map(elemento => <div key={elemento.id}>
                             <NoticiaItem
-                                jobtitle={elemento.nombre}
-                                //id: "1", precio: "1000", descripcion: "Art1 desc", nombre: "Art1", estado: "1"
-                                nombre={elemento.nombre}
-                                precio={elemento.precio}
-                                cantidad={elemento.cantidad}
-                                descripcion={elemento.descripcion}
-                                server_url={this.state.server_url}
-                                imagen={elemento.imagen}
-                                creado={elemento.fecha_registro}
-                                id={elemento.id}
-                                evento={this.handleClickAddCart} />
+                               NOTICIA_ID={elemento.NOTICIA_ID}
+                               DESCRIPCION={elemento.DESCRIPCION}
+                               FECHA={elemento.FECHA}
+                               TOPIC={elemento.TOPIC} />
                         </div>
                         )
                 }
