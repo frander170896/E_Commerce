@@ -103,13 +103,13 @@ class Login extends Component {
               <div className='col-md-1'></div>
               <div className='card border-dark col-md-10'>
                 <div className='card-header h2'>
-                  Login
+                  Ingresar al sitio
                 </div>
                 <div className='card-body text-dark'>
                   <form>
                     <div className='form-group'>
                       <label className='sr-only'>
-                        Email
+                        Correo
                       </label>
                       <div className='input-group mb-2'>
                         <div className='input-group-prepend'>
@@ -127,7 +127,7 @@ class Login extends Component {
                     </div>
                     <div className='form-group'>
                       <label className='sr-only'>
-                        Password
+                        Contraseña
                       </label>
                       <div className='input-group mb-2'>
                         <div className='input-group-prepend'>
@@ -142,10 +142,10 @@ class Login extends Component {
                       </div>
                     </div>
                     <Button color='secondary' className='btn btn-primary mb-2' onClick={this.login}>
-                      Login
+                      Ingresar
                     </Button>
                     <div id='alerta'></div>
-                    <small><a href='register'>Or create an account</a></small>
+                    <small><a href='register'>O crear cuenta</a></small>
                     <div className='col-md-1'></div>
                   </form>
                 </div>

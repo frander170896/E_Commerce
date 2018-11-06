@@ -80,23 +80,29 @@ class Noticias extends Component {
                 <MetaTags>
                     <title>E-Commerece | Noticias</title>
                     <meta name="description" content="Noticias, mantente actualizado con la novedades que te ofrecemos." />
-                    <meta name="keywords" content="News,Noticias, Tecnológia deportiva, Nutrición, mejor ropa para deporte" />
+                    <meta name="keywords" content="News, Noticias, Tecnológia deportiva, Nutrición, mejor ropa para deporte" />
                     <meta property="og:title" content="E-Commerce" />
                 </MetaTags>
-                <h2 className='ml-3 mt-3'>Available products</h2>
-                <div className='input-group-prepend m-3'>
-                    <span className='input-group-text' id='inputGroup-sizing-default'><img src={Lupa} /></span>
-                    <input
-                        className='form-control'
-                        aria-label='Default'
-                        aria-describedby='inputGroup-sizing-default'
-                        type='text'
-                        placeholder='Search'
-                        onChange={this.filterList} />
+                <h2 className='ml-3 mt-3'>Noticias de la página:</h2>
+                <div className='row'>
+                    <div className='col-xs-3 col-sm-3 col-md-3 col-lg-3'>
+                    </div>
+                    <div className='col-xs-9 col-sm-9 col-md-9 col-lg-9'>
+                        <div className='input-group-prepend m-3'>
+                            <span className='input-group-text' id='inputGroup-sizing-default'><img src={Lupa} /></span>
+                            <input
+                                className='form-control'
+                                aria-label='Default'
+                                aria-describedby='inputGroup-sizing-default'
+                                type='text'
+                                placeholder='Search'
+                                onChange={this.filterList} />
+                        </div>
+                    </div>
                 </div>
                 {!this.state.productos && !this.state.isfiltrado ?
                     <div className="alert alert-primary" role="alert">
-                        <i><strong>Loading...</strong></i>
+                        <i><strong>Cargando...</strong></i>
                     </div>
                     :
                     !this.state.isfiltrado && !this.state.datosFiltrados ?

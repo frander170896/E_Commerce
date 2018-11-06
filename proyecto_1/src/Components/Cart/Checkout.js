@@ -145,7 +145,7 @@ class Checkout extends Component {
           </ModalBody>
           <ModalFooter>
             <Button color='secondary' onClick={this.toggle}>
-              Close
+              Cerrar
             </Button>
           </ModalFooter>
         </Modal>
