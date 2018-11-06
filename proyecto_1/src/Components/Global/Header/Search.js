@@ -24,7 +24,7 @@ class Search extends Component {
         {this.state.usuario && this.state.usuario!='' ?
         <div className='badge badge-info'>
             <p>
-               Welcome: { this.state.usuario.usuario }
+               Bienvenido: { this.state.usuario.usuario }
             </p>
           </div>
           : ''}
