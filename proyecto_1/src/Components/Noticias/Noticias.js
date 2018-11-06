@@ -114,7 +114,7 @@ class Noticias extends Component {
                                 DESCRIPCION={elemento.DESCRIPCION}
                                 FECHA={elemento.FECHA}
                                 TOPIC={elemento.TOPIC}
-                                
+
                             />
                         </div>
                         )
@@ -125,7 +125,7 @@ class Noticias extends Component {
                                 DESCRIPCION={elemento.DESCRIPCION}
                                 FECHA={elemento.FECHA}
                                 TOPIC={elemento.TOPIC}
-                               
+
                             />
                         </div>
                         )
