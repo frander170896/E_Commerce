@@ -1,7 +1,7 @@
 // Dependencies
 import React, { Component } from 'react'
 import register_img from '../Global/images/register.png'
-
+import MetaTags from 'react-meta-tags'
 import '../Global/css/Register/register.css'
 
 class Register extends Component {
@@ -127,6 +127,12 @@ class Register extends Component {
     return (
 
       <div className='row'>
+        <MetaTags>
+          <title>E-Commerece | Registro</title>
+          <meta name="description" content="Registro, inicia la mejor experiencia de compra" />
+          <meta name="keywords" content="Register,Registro" />
+          <meta property="og:title" content="E-Commerce" />
+         </MetaTags>
         <div className='col-xs-12 col-sm-12 col-md-6 col-lg-6'>
           {/*<img src={register_img} alt="Register"/>*/}
           <h1>Registro</h1>

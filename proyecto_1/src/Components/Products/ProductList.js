@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import ProductItem from './ProductItem'
 import Lupa from '../Global/images/lupa.png'
+import MetaTags from 'react-meta-tags'
 
 class ProductList extends Component {
   constructor (props) {
@@ -72,10 +73,28 @@ class ProductList extends Component {
         })
     } catch(err) {}
   }
-
+  /*
+                          Do Your Keyword Research
+    Implementamos los keywords, ya que investigamos un poco y nos enteramos que
+    es una de las maneras más efectivas en las que el navegador encuentren
+    nuestro sitio web y asi nos posicione entre los primero resultados, encontramos que 
+    las keywords deben estar conformadas de 2 a 3 palabras como minimo, las mismas
+    deben estar conformada por palabras que son muy buscadas, si hacemos esto de manera 
+    correcta reduciremos las paginas de la competencia, ya que entre más coincida la 
+    busqueda del ususario con nuestros keywords mejor seremos posicionados, para lograr
+    esto agremas un meta de tipo keyword con frases representativas a cada uno de nuestros
+    URLs, con el fin de elegir keywords adecuados, hicimos uso de herramientas como
+    Google Keyword Planner,Google Trends y Übersuggest.
+   */
   render () {
     return (
       <div>
+        <MetaTags>
+            <title>E-Commerece | Productos</title>
+            <meta name="description" content="Productos, encuentra las mejores ofertas en artículos deportivos del mercado." />
+            <meta name="keywords" content="Products,Productos,Artículos deportivos, Suplementos deportivos, Tecnoloía deportiva" />
+            <meta property="og:title" content="E-Commerce" />
+        </MetaTags>        
         <h2 className='ml-3 mt-3'>Available products</h2>
         <div className='input-group-prepend m-3'>
           <span className='input-group-text' id='inputGroup-sizing-default'><img src={Lupa} /></span>

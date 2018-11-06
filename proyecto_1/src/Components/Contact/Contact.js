@@ -1,7 +1,7 @@
 // Dependencies
 import React, { Component } from 'react';
 import register_img from "../Global/images/register.png";
-
+import MetaTags from 'react-meta-tags'
 import '../Global/css/Register/register.css';
 
 class Contact extends Component {
@@ -12,15 +12,21 @@ class Contact extends Component {
         return (
 
             <div className="row">
+                <MetaTags>
+                    <title>E-Commerece | Contáctenos</title>
+                    <meta name="description" content="Contáctenos, te ofreceremos la mejor atención de manera inmedita" />
+                    <meta name="keywords" content="Contact,Contactenos,mejor servicio,frander@gmail.com,Gerson@gmail.com,David@gmail.com" />
+                    <meta property="og:title" content="E-Commerce" />
+                 </MetaTags>
                 <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                 {/*<img src={register_img} alt="Register"/>*/}
                 <h1> Registro</h1>
                 <img src={register_img} alt="Register"/>
                 <p>Al regístrate en Job-Search-Delta usted obtendrá múltiples beneficios referente a la bolsa de trabajo que se maneja, podrás analizar diferentes ofertas de trabajo que se ofrecen y ser postulantes de las mismas directamente.
-Actualmente se encuentra puestos de trabajo en la mayoría de las áreas lo cual ayudaría a obtener mayores posibilidades de empleo.
-Además, puede obtener información directamente del sitio de la pagina la que quieras postular.
-Los usuarios tendrán múltiple opciones de filtrado según sus necesidades o su áreas especifica de trabajo lo que le permite tener opciones mas especificas acorde a su experiencia y estudios.
-</p>
+                    Actualmente se encuentra puestos de trabajo en la mayoría de las áreas lo cual ayudaría a obtener mayores posibilidades de empleo.
+                    Además, puede obtener información directamente del sitio de la pagina la que quieras postular.
+                    Los usuarios tendrán múltiple opciones de filtrado según sus necesidades o su áreas especifica de trabajo lo que le permite tener opciones mas especificas acorde a su experiencia y estudios.
+                </p>
 
                 </div>
                 <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6">

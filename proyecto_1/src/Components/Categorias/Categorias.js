@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import ProductItem from '../Products/ProductItem'
 import Lupa from '../Global/images/lupa.png'
+import MetaTags from 'react-meta-tags'
 
 class Categorias extends Component {
   constructor(props) {
@@ -111,6 +112,12 @@ class Categorias extends Component {
   render() {
     return (
       <div className="row jobs">
+        <MetaTags>
+            <title>E-Commerece | Categorias</title>
+            <meta name="description" content="Categorias de articulos deportivos, tenemos los mejores productos, elige calidad" />
+            <meta name="keywords" content="Categorias, Categories, Ropa deportiva, artículos tecnológicos,combos, Individuales,suplementos deportivos" />
+            <meta property="og:title" content="E-Commerce" />
+        </MetaTags>
         <div className="col-ms-4 col-md-3 col-lg-2 mt-3" >
           <div className='ml-3 mt-3'>
             <label><strong>Select Category</strong></label>

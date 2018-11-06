@@ -12,13 +12,13 @@ class Menu extends Component {
                     <a className="nav-link" activeClassName="active" activeStyle={{ color: 'blue' }} href="/Products">Productos</a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" activeClassName="active" activeStyle={{ color: 'blue' }} href="/categorias">Categorias</a>
+                    <a className="nav-link" activeClassName="active" activeStyle={{ color: 'blue' }} href="/categorias">Categorías</a>
                 </li>
                 <li className="nav-item">
                     <a className="nav-link" activeClassName="active" activeStyle={{ color: 'blue' }} href="/Noticias">Noticias</a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" activeClassName="active" activeStyle={{ color: 'blue' }} href="/contact">Contactenos</a>
+                    <a className="nav-link" activeClassName="active" activeStyle={{ color: 'blue' }} href="/contact">Contáctenos</a>
                 </li>
                 <li className="nav-item">
                     <a className="nav-link" activeClassName="active" activeStyle={{ color: 'blue' }} href="/about_us">Sobre Nosotros</a>
