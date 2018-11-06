@@ -15,7 +15,7 @@ class Contact extends Component {
                 <MetaTags>
                     <title>E-Commerece | Contáctenos</title>
                     <meta name="description" content="Contáctenos, te ofreceremos la mejor atención de manera inmedita" />
-                    <meta name="keywords" content="Contact,Contactenos,mejor servicio" />
+                    <meta name="keywords" content="Contact,Contactenos,mejor servicio,frander@gmail.com,Gerson@gmail.com,David@gmail.com" />
                     <meta property="og:title" content="E-Commerce" />
                  </MetaTags>
                 <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6">

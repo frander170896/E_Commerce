@@ -115,7 +115,7 @@ class Categorias extends Component {
         <MetaTags>
             <title>E-Commerece | Categorias</title>
             <meta name="description" content="Categorias de articulos deportivos, tenemos los mejores productos, elige calidad" />
-            <meta name="keywords" content="Categorias, Categories" />
+            <meta name="keywords" content="Categorias, Categories, Ropa deportiva, artículos tecnológicos,combos, Individuales,suplementos deportivos" />
             <meta property="og:title" content="E-Commerce" />
         </MetaTags>
         <div className="col-ms-4 col-md-3 col-lg-2 mt-3" >
