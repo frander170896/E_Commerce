@@ -42,6 +42,10 @@ class NoticiaItem extends Component {
         const array = this.generarArray(id, nombre, descripcion, precio, creado);
         this.props.evento(array);
     }
+    comentar(usuario,noticia){
+
+    }
+
     render() {
         return (
             <div>
@@ -90,7 +94,7 @@ class NoticiaItem extends Component {
                                         <textarea name="otherDetails" class="form-control" rows="2" id="comment" placeholder="Other details"></textarea>
                                         </div>
                                         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                                            <button className="btn btn-primary btn-sm">Comentar</button>
+                                            <button className="btn btn-primary btn-sm" onClick={''}>Comentar</button>
                                         </div>
                                     
                                 </div>
@@ -98,7 +102,7 @@ class NoticiaItem extends Component {
                         </div>
                     </div>
                     <div className="col-sm-6 ">
-                    <Comentarios />
+                    <Comentarios NOTICIA_ID={this.props.NOTICIA_ID} />
                     </div>
                 </div>
             </div>

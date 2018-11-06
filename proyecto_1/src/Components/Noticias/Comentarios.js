@@ -26,22 +26,29 @@ class Comentarios extends Component {
     constructor(props) {
         super(props);
         this.state = {
-
+            comentarios: [],
             show: false
         };
-        this.handleShow = this.handleShow.bind(this);
+     
     }
-    handleShow() {
-        this.setState({ show: true });
+    componentWillMount() {
+        var url = this.state.api +
+            '/comentario/'+this.props.NOTICIA_ID
+        try {
+            fetch(url)
+                .then((response) => {
+                    return response.json()
+                })
+                .then((data) => {
+                    if (data) {
+                        //console.log(data)
+                        this.setState({ comentarios: data })
+                    } else {
+                    }
+                })
+        } catch (err) { }
     }
-    generarArray(id, nombre, descripcion, precio, creado) {
-        const array = { id, nombre, descripcion, precio, creado }
-        return JSON.stringify(array);
-    }
-    handleDetails(id, nombre, descripcion, precio, creado) { // se reciben los datos del articulo para enviarselos al padre
-        const array = this.generarArray(id, nombre, descripcion, precio, creado);
-        this.props.evento(array);
-    }
+
     render() {
         return (
             <div>
@@ -60,15 +67,22 @@ class Comentarios extends Component {
                             </tr>
                         </thead>
                         <tbody>
-
-
-                            <tr>
+                        {
+                            this.state.comentarios.length>0?
+                            this.state.comentarios.map(elemento => <div key={elemento.NOTICIA_ID}>
+                             <tr>
                                 <td>A</td>
                                 <td>B</td>
                                 <td>C</td>
                                 <td>D</td>
 
                             </tr>
+                        </div>
+                        ):
+                        <p>No hay comentarios...</p>
+                }
+
+                           
 
                         </tbody>
                     </table>
