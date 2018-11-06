@@ -69,28 +69,23 @@ class NoticiaItem extends Component {
                     <div className="col-sm-9 ">
                         <div className="card  card-job">
                             <div className="card-body">
-                                <h4 className="card-title">Product</h4>
-                                <h5 className="card-subtitle mb-2">{this.props.nombre}</h5>
+                                <h4 className="card-title">Noticia # {this.props.NOTICIA_ID}</h4>
+                                
                                 <p> <i>
-                                    <strong>Description:  </strong>
-                                     {this.props.descripcion ? this.props.descripcion : 'Not especified.'}
+                                    <strong>Tópico:  </strong>
+                                     {this.props.TOPIC==1 ? 
+                                        "Informativa" : 'Not especified.'}
                                 </i>
-                                </p>
-                                <p>
-                                    <i><strong>Job Type:  </strong> {"₡"+this.props.precio}</i>
-                                </p>
-                                <p>
-                                    <i><strong>Items:  </strong> {this.props.cantidad}</i>
-                                </p>
+                                </p>                              
                                 <p className="card-text">
-                                <i><strong>Last Modified:  </strong> {this.props.creado}</i>
+                                <i><strong>Noticia:  </strong> {this.props.DESCRIPCION}</i>
                                 
                                 </p>
-                                <button className="btn btn-danger"
-                                 onClick={()=>{this.handleDetails(this.props.id,this.props.nombre,
-                                 this.props.descripcion,
-                                 this.props.precio,this.props.creado) 
-                                 }} >Add to cart</button>
+                                <p className="card-text">
+                                <i><strong>Fecha de Publicación:  </strong> {this.props.FECHA}</i>
+                                
+                                </p>
+                                <button className="btn btn-danger">Comentar</button>
                             </div>
                         </div>
                     </div>
