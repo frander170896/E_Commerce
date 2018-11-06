@@ -3,6 +3,7 @@ import NoticiaItem from './NoticiaItem'
 import Lupa from '../Global/images/lupa.png'
 import MetaTags from 'react-meta-tags'
 import NoticiasForm from './NoticiasForm'
+
 class Noticias extends Component {
     constructor(props) {
         super(props)
@@ -58,7 +59,7 @@ class Noticias extends Component {
     }
     componentWillMount() {
         var url = this.state.api +
-            '/implDeport/'
+            '/noticia/'
         try {
             fetch(url)
                 .then((response) => {
@@ -86,10 +87,10 @@ class Noticias extends Component {
                 <h2 className='ml-3 mt-3'>Noticias de la página:</h2>
                 <div className='row'>
                     <div className='col-xs-3 col-sm-3 col-md-3 col-lg-3'>
-                    <NoticiasForm />
+                        <NoticiasForm />
                     </div>
                     <div className='col-xs-9 col-sm-9 col-md-9 col-lg-9'>
-                        <div className='input-group-prepend m-3'>
+                        <div className='input-group-prepend'>
                             <span className='input-group-text' id='inputGroup-sizing-default'><img src={Lupa} /></span>
                             <input
                                 className='form-control'
@@ -107,35 +108,25 @@ class Noticias extends Component {
                     </div>
                     :
                     !this.state.isfiltrado && !this.state.datosFiltrados ?
-                        this.state.productos.map(elemento => <div key={elemento.id}>
+                        this.state.productos.map(elemento => <div key={elemento.NOTICIA_ID}>
                             <NoticiaItem
-                                jobtitle={elemento.nombre}
-                                //id: "1", precio: "1000", descripcion: "Art1 desc", nombre: "Art1", estado: "1"
-                                nombre={elemento.nombre}
-                                precio={elemento.precio}
-                                cantidad={elemento.cantidad}
-                                descripcion={elemento.descripcion}
-                                server_url={this.state.server_url}
-                                imagen={elemento.imagen}
-                                creado={elemento.fecha_registro}
-                                id={elemento.id}
-                                evento={this.handleClickAddCart} />
+                                NOTICIA_ID={elemento.NOTICIA_ID}
+                                DESCRIPCION={elemento.DESCRIPCION}
+                                FECHA={elemento.FECHA}
+                                TOPIC={elemento.TOPIC}
+                                
+                            />
                         </div>
                         )
                         :
-                        this.state.datosFiltrados.map(elemento => <div key={elemento.id}>
+                        this.state.datosFiltrados.map(elemento => <div key={elemento.NOTICIA_ID}>
                             <NoticiaItem
-                                jobtitle={elemento.nombre}
-                                //id: "1", precio: "1000", descripcion: "Art1 desc", nombre: "Art1", estado: "1"
-                                nombre={elemento.nombre}
-                                precio={elemento.precio}
-                                cantidad={elemento.cantidad}
-                                descripcion={elemento.descripcion}
-                                server_url={this.state.server_url}
-                                imagen={elemento.imagen}
-                                creado={elemento.fecha_registro}
-                                id={elemento.id}
-                                evento={this.handleClickAddCart} />
+                                NOTICIA_ID={elemento.NOTICIA_ID}
+                                DESCRIPCION={elemento.DESCRIPCION}
+                                FECHA={elemento.FECHA}
+                                TOPIC={elemento.TOPIC}
+                               
+                            />
                         </div>
                         )
                 }

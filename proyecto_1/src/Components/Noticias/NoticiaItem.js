@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
 import Company from "../Global/images/logo.svg";
+import NoticiaImage from '../Global/images/noticia.png'
 
 class ProductDetail extends Component {
     render() {
         return (
-            <img src={this.props.company_logo ?
-                this.props.server_url+this.props.company_logo : Company} 
-                 className="img-thumbnail img-company" alt="company" />
+            <img src={NoticiaImage}
+                 className="img-thumbnail img-company" alt="noticia img" />
         );
     }
 }
@@ -74,7 +74,7 @@ class NoticiaItem extends Component {
                                 <p> <i>
                                     <strong>Tópico:  </strong>
                                      {this.props.TOPIC==1 ? 
-                                        "Informativa" : 'Not especified.'}
+                                        "Informativa" : this.props.TOPIC==2 ?"Descuentos":"Importantes"}
                                 </i>
                                 </p>                              
                                 <p className="card-text">
