@@ -14,7 +14,18 @@ import Contact from './Components/Contact/Contact'
 import Categorias from './Components/Categorias/Categorias'
 import Header from './Components/Global/Header/Header'
 import Footer from './Components/Global/Footer/Footer'
+/*
+                  Standardize Your URL Structures
+Pensamos en que esta técnica de optimización es de suma importancia, ya 
+perimite tener nuestro sitio ordenado, permitiendo a nuestros clientes navegar
+de una manera más facil, como se puede observar creamos URLs con una extención 
+menor a 4 niveles de directorios, sin dejar de lado que usamos URLs descriptivas
+haciendo que los navegadores reconoscan e indexen nuestras direcciones de manera
+más facil, par lograr esto decidimos implementar en nuestro proyecto react routes,
+el cual es una de las librerias más pontentes que posee react para el manejo de 
+rutas.
 
+ */
 
 const AppRoutes = () =>
   <App>

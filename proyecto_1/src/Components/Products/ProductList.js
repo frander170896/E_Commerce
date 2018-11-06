@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import ProductItem from './ProductItem'
 import Lupa from '../Global/images/lupa.png'
+import MetaTags from 'react-meta-tags'
 
 class ProductList extends Component {
   constructor (props) {
@@ -76,6 +77,12 @@ class ProductList extends Component {
   render () {
     return (
       <div>
+        <MetaTags>
+            <title>E-Commerece | Productos</title>
+            <meta name="description" content="Productos, encuentra las mejores ofertas en artículos deportivos del mercado." />
+            <meta name="keywords" content="Products,Productos" />
+            <meta property="og:title" content="E-Commerce" />
+        </MetaTags>        
         <h2 className='ml-3 mt-3'>Available products</h2>
         <div className='input-group-prepend m-3'>
           <span className='input-group-text' id='inputGroup-sizing-default'><img src={Lupa} /></span>

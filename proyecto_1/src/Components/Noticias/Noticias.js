@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import NoticiaItem from './NoticiaItem'
 import Lupa from '../Global/images/lupa.png'
+import MetaTags from 'react-meta-tags'
 
 class Noticias extends Component {
     constructor(props) {
@@ -76,6 +77,12 @@ class Noticias extends Component {
     render() {
         return (
             <div>
+                <MetaTags>
+                    <title>E-Commerece | Noticias</title>
+                    <meta name="description" content="Noticias, mantente actualizado con la novedades que te ofrecemos." />
+                    <meta name="keywords" content="News,Noticias" />
+                    <meta property="og:title" content="E-Commerce" />
+                </MetaTags>
                 <h2 className='ml-3 mt-3'>Available products</h2>
                 <div className='input-group-prepend m-3'>
                     <span className='input-group-text' id='inputGroup-sizing-default'><img src={Lupa} /></span>

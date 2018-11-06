@@ -2,6 +2,7 @@
 import React, { Component } from 'react'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
 import user from '../Global/icons/usuario.png'
+import MetaTags from 'react-meta-tags'
 
 class Login extends Component {
   constructor (props) {
@@ -82,6 +83,12 @@ class Login extends Component {
   render () {
     return (
       <div>
+         <MetaTags>
+          <title>E-Commerece | Registro</title>
+          <meta name="description" content="Inicio de sesión, inicia la mejor experiencia de compra" />
+          <meta name="keywords" content="Login,Inicio de sesión" />
+          <meta property="og:title" content="E-Commerce" />
+         </MetaTags>
         <a
           href='#'
           id='navbar-static-login'
