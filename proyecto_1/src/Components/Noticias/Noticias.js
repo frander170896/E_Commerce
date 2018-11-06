@@ -80,7 +80,7 @@ class Noticias extends Component {
                 <MetaTags>
                     <title>E-Commerece | Noticias</title>
                     <meta name="description" content="Noticias, mantente actualizado con la novedades que te ofrecemos." />
-                    <meta name="keywords" content="News,Noticias" />
+                    <meta name="keywords" content="News,Noticias, Tecnológia deportiva, Nutrición, mejor ropa para deporte" />
                     <meta property="og:title" content="E-Commerce" />
                 </MetaTags>
                 <h2 className='ml-3 mt-3'>Available products</h2>

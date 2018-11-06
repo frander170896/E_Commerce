@@ -12,7 +12,7 @@ class Cart extends Component {
         <MetaTags>
             <title>E-Commerece | Carrito</title>
             <meta name="description" content="Carrito de compras" />
-            <meta name="keywords" content="Cart, E-Commerce, Carrito," />
+            <meta name="keywords" content="Cart, E-Commerce, Carrito de compras, tus productos deportivos" />
             <meta property="og:title" content="E-Commerce" />
         </MetaTags>
         <section className='jumbotron text-center'>

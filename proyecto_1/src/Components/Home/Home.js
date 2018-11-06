@@ -11,7 +11,7 @@ class Home extends Component {
        <MetaTags>
           <title>E-Commerece | Inicio</title>
           <meta name="description" content="Te ofrecemos los mejores artículos del mercado, todo en articulos deportivos" />
-          <meta name="keywords" content="Home,Inicio" />
+          <meta name="keywords" content="Home,Inicio,Top artículos deportivos, suplementos deportivos" />
           <meta property="og:title" content="E-Commerce" />
         </MetaTags>
         <h1>WELCOME</h1>
