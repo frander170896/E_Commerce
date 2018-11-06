@@ -26,10 +26,13 @@ class NoticiaItem extends Component {
     constructor(props) {
         super(props);
         this.state = {
-
+            server_url: 'http://localhost:8098/Proyectos/E_Commerce/',
+            api: 'http://localhost:8098/Proyectos/E_Commerce/server/Controlador/index.php',
             show: false
         };
         this.handleShow = this.handleShow.bind(this);
+        this.comentar = this.comentar.bind(this);
+        this.guardar = this.guardar.bind(this);
     }
     handleShow() {
         this.setState({ show: true });
@@ -42,7 +45,50 @@ class NoticiaItem extends Component {
         const array = this.generarArray(id, nombre, descripcion, precio, creado);
         this.props.evento(array);
     }
-    comentar(usuario,noticia){
+    comentar(e) {
+        const index2 = e.currentTarget.getAttribute('data-item');
+        this.guardar(index2,1,'hola');
+    }
+
+    guardar(noticia, usuario, comentario) {
+        alert('guardando')
+        var url = this.state.api +
+            '/comentario//';
+        var data1 = JSON.stringify({
+            metodo: 'insertarComentario',
+            DESCRIPCION: comentario,
+            TOPIC: "Noticias",
+            USUARIO_ID: usuario,
+            NOTICIA_ID: noticia
+        })
+        console.log(data1)
+        fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: data1
+        }).then((response) => response.json())
+            .then((data) => {
+                if (data.code == '200') {
+                    document.getElementById('alerta').innerHTML =
+                        '<p class="alert alert-success"><small>Proceso completado correctamente</small><p>'
+                    document.body.scrollTop = 0 // For Safari
+                    document.documentElement.scrollTop = 0 //
+
+                    this.setState({
+                        modal: !this.state.modal
+                    })
+                    document.location.reload();
+                } else {
+                    document.getElementById('alerta').innerHTML =
+                        '<p class="alert alert-danger">' + data.msg + '<p>'
+                    document.body.scrollTop = 0 // For Safari
+                    document.documentElement.scrollTop = 0 //
+                }
+            })
+            .catch((error) => {
+                document.getElementById('alerta').innerHTML =
+                    '<p class="alert alert-success"><small>' + error + '</small><p>'
+            })
 
     }
 
@@ -92,17 +138,18 @@ class NoticiaItem extends Component {
                                 <div class="row">
                                     <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
                                         <textarea name="otherDetails" class="form-control" rows="2" id="comment" placeholder="Other details"></textarea>
-                                        </div>
-                                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                                            <button className="btn btn-primary btn-sm" onClick={''}>Comentar</button>
-                                        </div>
-                                    
+                                    </div>
+                                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                        <button className="btn btn-primary btn-sm" key={this.props.NOTICIA_ID} data-item={this.props.NOTICIA_ID} onClick={this.comentar}>Comentar</button>
+                                    </div>
+
                                 </div>
+                                <div className='row' id='alerta'></div>
                             </div>
                         </div>
                     </div>
                     <div className="col-sm-6 ">
-                    <Comentarios NOTICIA_ID={this.props.NOTICIA_ID} />
+                        <Comentarios NOTICIA_ID={this.props.NOTICIA_ID} />
                     </div>
                 </div>
             </div>

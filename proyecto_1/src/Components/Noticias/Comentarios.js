@@ -27,23 +27,28 @@ class Comentarios extends Component {
         super(props);
         this.state = {
             comentarios: [],
-            show: false
+            show: false,
+            server_url: 'http://localhost:8098/Proyectos/E_Commerce/',
+            api: 'http://localhost:8098/Proyectos/E_Commerce/server/Controlador/index.php',
         };
      
     }
     componentWillMount() {
         var url = this.state.api +
             '/comentario/'+this.props.NOTICIA_ID
+            
         try {
             fetch(url)
                 .then((response) => {
                     return response.json()
                 })
                 .then((data) => {
+                    console.log("datos component cm "+data)
                     if (data) {
-                        //console.log(data)
+                        
                         this.setState({ comentarios: data })
                     } else {
+                        console.log(" not found datos component cm ")
                     }
                 })
         } catch (err) { }
@@ -55,29 +60,27 @@ class Comentarios extends Component {
 
 
                 <div className="row">
-
+                   <h4>Comentarios</h4>
                     <table data-toggle="table" id="table" className="table table-hover">
                         <thead>
                             <tr>
                                
                                 <th data-field="PhoneNumber" data-sortable="true">Usuario</th>
                                 <th data-field="BillIssuedDate" data-sortable="true">Descripcion</th>
-                                <th data-field="PaymentDueDate" data-sortable="true">Fecha</th>
+                                <th data-field="PaymentDueDate" data-sortable="true">Publicado</th>
                                 
                             </tr>
                         </thead>
                         <tbody>
                         {
-                            this.state.comentarios.length>0?
-                            this.state.comentarios.map(elemento => <div key={elemento.NOTICIA_ID}>
-                             <tr>
-                                <td>A</td>
-                                <td>B</td>
-                                <td>C</td>
-                                <td>D</td>
-
+                            this.state.comentarios.length > 0 ?
+                            this.state.comentarios.map(elemento => 
+                             <tr key={elemento.NOTICIA_ID}>
+                                <td>{elemento.USUARIO_ID}</td>
+                                <td>{elemento.DESCRIPCION}</td>
+                                <td>{elemento.FECHA}</td>
                             </tr>
-                        </div>
+                        
                         ):
                         <p>No hay comentarios...</p>
                 }

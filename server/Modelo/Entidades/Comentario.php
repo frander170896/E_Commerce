@@ -1,20 +1,19 @@
 <?php
 include_once("App.php");
 class Comentario {
-    public static function obtenerComentariosId($id)
+    public static function obtenerComentariosId($noticia)
     {
         try {
             $dbh = Conexion::getConexionPDO();
             if ($noticia) {
-                $select = "SELECT * FROM COMENTARIOS WHERE COMENTARIO_ID=" . $id;
+                $select = "SELECT * FROM COMENTARIOS WHERE NOTICIA_ID=" . $noticia;
                 $stmt = $dbh->prepare($select);
                 $stmt->execute();
-                $noticia = $stmt->fetchObject();
-                if($noticia){
-                    echo json_encode($noticia);
-                }else{
-                    echo App::error("No se encontró la noticia...");
+                $data = Array(); 
+                while ($result = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    $data[] = $result; 
                 }
+                echo json_encode($data);
                 
             }else{
                 echo App::error("Failed: Missing user or password...");

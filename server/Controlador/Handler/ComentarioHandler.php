@@ -6,9 +6,7 @@ class ComentarioHandler
     {
         try {
             if ($id != null) {
-                $split = explode("-", $id);
-                $username = $split[0];
-                $pass = (string)$split[1];
+                
                 return Comentario::obtenerComentariosId($id);
             }else{
                 return Comentario::obtenerComentarios();
