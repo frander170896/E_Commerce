@@ -6,9 +6,7 @@ class NoticiasHandler
     {
         try {
             if ($id != null) {
-                $split = explode("-", $id);
-                $username = $split[0];
-                $pass = (string)$split[1];
+                
                 return Noticias::obtenerNoticiaID($id);
             }else{
                 return Noticias::obtenerNoticias();

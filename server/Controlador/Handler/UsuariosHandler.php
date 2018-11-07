@@ -6,10 +6,8 @@ class UsuariosHandler
     {
         try {
             if ($usuPass != null) {
-                $split = explode("-", $usuPass);
-                $username = $split[0];
-                $pass = (string)$split[1];
-                return Usuario::obtenerUsuario($username, $pass);
+                $_POST = json_decode(file_get_contents('php://input'), True);
+                return Usuario::obtenerUsuario($_POST['email'], $_POST['pass']);
             }
         } catch (Exception $e) {
             echo App::error($e->getMessage());
@@ -20,7 +18,8 @@ class UsuariosHandler
         try {
             $_POST = json_decode(file_get_contents('php://input'), True);
             if ($_POST['metodo'] == 'login') {
-               // return Login::obtenerusuario('gerson@gmail.com', 'admin123');
+              
+                return Usuario::obtenerUsuario($_POST['email'], $_POST['pass']);
             } else if ($_POST['metodo'] == 'insertarUsuario') {
                 return Usuario::insertarUsuario($_POST);
             } 

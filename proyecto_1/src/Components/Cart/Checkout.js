@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
 import Credit from '../Global/icons/credit.jpg'
 class Checkout extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
       modal: false,
@@ -14,67 +14,67 @@ class Checkout extends Component {
     }
     this.recargar = this.recargar.bind(this)
     this.toggle = this.toggle.bind(this)
-    this.Guardar=this.Guardar.bind(this)
+    this.Guardar = this.Guardar.bind(this)
   }
-  ObtenerArrayId(){
-    let array = localStorage.Cart?JSON.parse(localStorage.Cart):[]
+  ObtenerArrayId() {
+    let array = localStorage.Cart ? JSON.parse(localStorage.Cart) : []
     let resultado = []
-   
-    for(var i = 0; i< array.length; i++){
-        resultado.push({id:array[i].id});
+
+    for (var i = 0; i < array.length; i++) {
+      resultado.push({ id: array[i].id });
     }
-    
+
     //console.log(resultado);
-    return  JSON.stringify(resultado)
+    return JSON.stringify(resultado)
   }
-  recargar(){
-    
+  recargar() {
+
     this.toggle();
     window.location.reload();
   }
 
-  Guardar () {
+  Guardar() {
     localStorage.removeItem("Cart");
     let array = this.ObtenerArrayId();
     var url = this.state.api +
-    '/compra/'
-      fetch(url,{
-        method: "post",
-        headers: {'Content-Type': 'application/json'},
-        body: array
-    
-      }).then((response) => response.json())
+      '/compra/'
+    fetch(url, {
+      method: "post",
+      headers: { 'Content-Type': 'application/json' },
+      body: array
+
+    }).then((response) => response.json())
       .then((data) => {
-        
+
         if (data.code == '200') {
           document.getElementById('alerta').innerHTML =
-          '<p class="alert alert-success"><small>Proceso completado correctamente</small><p>'
-            document.body.scrollTop = 0 // For Safari
-            document.documentElement.scrollTop = 0 //
-            
-            this.toggle();
-            window.location.reload();
-            
-            
-          
+            '<p class="alert alert-success"><small>Proceso completado correctamente</small><p>'
+          document.body.scrollTop = 0 // For Safari
+          document.documentElement.scrollTop = 0 //
+
+          this.toggle();
+          window.location.reload();
+
+
+
         } else {
           //alert(data.msj)
         }
       })
       .catch((error) => {
-          document.getElementById('alerta').innerHTML =
-          '<p class="alert alert-success"><small>'+error+'</small><p>'
+        document.getElementById('alerta').innerHTML =
+          '<p class="alert alert-success"><small>' + error + '</small><p>'
       })
-      
+
   }
 
-  toggle () {
+  toggle() {
     this.setState({
       modal: !this.state.modal
     })
   }
 
-  render () {
+  render() {
     return (
       <div>
         <a
@@ -88,60 +88,57 @@ class Checkout extends Component {
             Pay
           </ModalHeader>
           <ModalBody>
-          <div className='container'>
-                <form >
-                    <div className='row'>
-                    
-                    <img src={Credit} alt='Register' />
-                        <div className='col-xs-12 col-sm-12 col-md-12 form-group required'>
-                            <label className='control-label'>Name on Card</label>
-                            <select className='form-control' type='text'>
-                                <option value="Visa">Visa</option>
-                                <option value="MasterCard">MasterCard</option>
-                                <option value="American Express">American Express</option>
-                                <option value="Visa Electron">Visa Electron</option>
-                            </select>
-                        </div>
+            <div className='container'>
+              <form onSubmit={this.Guardar}>
+                <div className='row'>
+
+                  <img src={Credit} alt='Register' />
+                  <div className='col-xs-12 col-sm-12 col-md-12 form-group required'>
+                    <label className='control-label'>Name on Card</label>
+                    <select className='form-control' type='text'>
+                      <option value="Visa">Visa</option>
+                      <option value="MasterCard">MasterCard</option>
+                      <option value="American Express">American Express</option>
+                      <option value="Visa Electron">Visa Electron</option>
+                    </select>
+                  </div>
+                </div>
+                <div className='row'>
+                  <div className='col-xs-12 col-sm-12 col-md-12 form-group required'>
+                    <label className='control-label'>Card Number</label>
+                    <input autocomplete='off' className='form-control card-number' size='20' type='number' minlength='10' maxlength='19'></input>
+                  </div>
+                </div>
+                <div className='form-row'>
+                  <div className='col-xs-4 form-group cvc required'>
+                    <label className='control-label'>CVC</label>
+                    <input autocomplete='off' className='form-control card-cvc' size='3' placeholder='ex. 311'  type='text' required></input>
+                  </div>
+                  <div className='col-xs-4 form-group expiration required'>
+                    <label for="start" className='control-label'>Fecha de expiración</label>
+                    <input type="month" className='form-control'  min="2018-11" name="bdaymonth"/>
+                   
+                  </div>
+                  
+                </div>
+                <div className='form-row'>
+                  <div className='col-md-12'>
+                    <div className='form-control total btn btn-info'>
+                      Total:
+                        <span className='amount'>{"₡" + this.props.total}</span>
                     </div>
-                    <div className='row'>
-                        <div className='col-xs-12 col-sm-12 col-md-12 form-group required'>
-                            <label className='control-label'>Card Number</label>
-                            <input autocomplete='off' className='form-control card-number' size='20' type='text'></input>
-                        </div>
-                    </div>
-                    <div className='form-row'>
-                        <div className='col-xs-4 form-group cvc required'>
-                            <label className='control-label'>CVC</label>
-                            <input autocomplete='off' className='form-control card-cvc' placeholder='ex. 311' size='4' type='text'></input>
-                        </div>
-                        <div className='col-xs-4 form-group expiration required'>
-                            <label className='control-label'>Expiration</label>
-                            <input className='form-control card-expiry-month' placeholder='MM' size='2' type='text'></input>
-                        </div>
-                        <div className='col-xs-4 form-group expiration required'>
-                            <label className='control-label'> </label>
-                            <input className='form-control card-expiry-year' placeholder='YYYY' size='4' type='text'></input>
-                        </div>
-                    </div>
-                    <div className='form-row'>
-                    <div className='col-md-12'>
-                        <div className='form-control total btn btn-info'>
-                        Total:
-                        <span className='amount'>{"₡"+this.props.total}</span>
-                        </div>
-                    </div>
-                    </div>
-                    <div className='form-row'>
-                    
-                        <div className='col-md-12 form-group'>
-                            <div id='alerta'></div>
-                            <button className='form-control btn btn-primary submit-button' onClick={this.Guardar}>Pay »</button>
-                        </div>
-                        
-                    </div>
-                </form>
-                
-        </div>
+                  </div>
+                </div>
+                <div className='form-row'>
+                  <div className='col-md-12 form-group'>
+                    <div id='alerta'></div>
+                    <button className='form-control btn btn-primary submit-button'>Pay »</button>
+                  </div>
+
+                </div>
+              </form>
+
+            </div>
           </ModalBody>
           <ModalFooter>
             <Button color='secondary' onClick={this.toggle}>

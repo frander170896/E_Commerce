@@ -5,7 +5,7 @@ import user from '../Global/icons/usuario.png'
 import MetaTags from 'react-meta-tags'
 
 class Login extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
       modal: false,
@@ -21,16 +21,27 @@ class Login extends Component {
     this.handlePassword = this.handlePassword.bind(this)
   }
 
-  login () {
+  login() {
     var url = this.state.api +
-    '/usuario/' + this.state.email + '-' + this.state.password
-    // var url="http://localhost:8098/Proyectos/E_Commerce/server/Controlador/index.php/usuario/david-1234"
+      '/usuario/'
+    var data1 = JSON.stringify({
+      metodo: 'login',
+      email: this.state.email,
+      pass: this.state.password
+    })
+    console.log('Data '+data1);
     try {
-      fetch(url)
+      fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: data1
+      })
         .then((response) => {
+          //console.log(response)
           return response.json()
         })
         .then((data) => {
+          
           if (data) {
             if (data.code != 401) {
               let Cart = []
@@ -41,54 +52,56 @@ class Login extends Component {
               window.location = '/Products'
               this.toggle()
               this.forceUpdate()
-            }else {
+            } else {
               localStorage.setItem('loginUser', 'NULL')
+              localStorage.setItem('loggedUser',null)
               document.getElementById('alerta').innerHTML =
-                '<p class="alert alert-danger"><small>Credenciales incorrectas, intente de nuevo</small><p>'
+                '<p class="alert alert-danger"><small>Credenciales incorrectas, intente de nuevo!</small><p>'
               document.body.scrollTop = 0 // For Safari
               document.documentElement.scrollTop = 0 //
             }
           } else {
             localStorage.setItem('loginUser', 'NULL')
+            localStorage.setItem('loggedUser',null)
             document.getElementById('alerta').innerHTML =
               '<p class="alert alert-danger"><small>Credenciales incorrectas, intente de nuevo</small><p>'
             document.body.scrollTop = 0 // For Safari
             document.documentElement.scrollTop = 0 //
           }
         })
-    } catch(err) {
+    } catch (err) {
       document.getElementById('alerta').innerHTML =
         err.message
     }
   }
 
-  toggle () {
+  toggle() {
     this.setState({
       modal: !this.state.modal
     })
   }
-  handleEmail (event) {
+  handleEmail(event) {
     var correo = event.target.value
     this.setState({
       email: correo
     })
   }
 
-  handlePassword (event) {
+  handlePassword(event) {
     var pass = event.target.value
     this.setState({
       password: pass
     })
   }
-  render () {
+  render() {
     return (
       <div>
-         <MetaTags>
+        <MetaTags>
           <title>E-Commerece | Registro</title>
           <meta name="description" content="Inicio de sesión, inicia la mejor experiencia de compra" />
           <meta name="keywords" content="Login,Inicio de sesión" />
           <meta property="og:title" content="E-Commerce" />
-         </MetaTags>
+        </MetaTags>
         <a
           href='#'
           id='navbar-static-login'

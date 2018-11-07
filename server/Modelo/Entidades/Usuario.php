@@ -6,7 +6,7 @@ class Usuario {
         try {
             $dbh = Conexion::getConexionPDO();
             if ($email && $password) {
-                $select = "SELECT * FROM usuarios WHERE usuario = '" . $email . "' and contra = '" . $password . "';";
+                $select = "SELECT * FROM usuarios WHERE (usuario = '" . $email . "' OR email = '" . $email . "') and contra = '" . $password . "';";
                 $stmt = $dbh->prepare($select);
                 $stmt->execute();
                 $usuario = $stmt->fetchObject();
