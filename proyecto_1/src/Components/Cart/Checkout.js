@@ -94,7 +94,7 @@ class Checkout extends Component {
 
                   <img src={Credit} alt='Register' />
                   <div className='col-xs-12 col-sm-12 col-md-12 form-group required'>
-                    <label className='control-label'>Name on Card</label>
+                    <label className='control-label'> Nombre de la tarjeta</label>
                     <select className='form-control' type='text'>
                       <option value="Visa">Visa</option>
                       <option value="MasterCard">MasterCard</option>
@@ -105,7 +105,7 @@ class Checkout extends Component {
                 </div>
                 <div className='row'>
                   <div className='col-xs-12 col-sm-12 col-md-12 form-group required'>
-                    <label className='control-label'>Card Number</label>
+                    <label className='control-label'>Número de la tarjeta</label>
                     <input autocomplete='off' className='form-control card-number' size='20' type='number' minlength='10' maxlength='19'></input>
                   </div>
                 </div>

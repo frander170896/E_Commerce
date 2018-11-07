@@ -7,6 +7,9 @@ import Table from './Table.js'
 
 class Cart extends Component {
   render () {
+    if(!localStorage.loggedUser||localStorage.loggedUser==='null'){
+      window.location = '/Register'
+    }
     return (
       <div>
         <MetaTags>
@@ -17,7 +20,7 @@ class Cart extends Component {
         </MetaTags>
         <section className='jumbotron text-center'>
           <div className='container'>
-            <h1 className='jumbotron-heading'>E-COMMERCE CART</h1>
+            <h1 className='jumbotron-heading'>E-COMMERCE Carrito</h1>
           </div>
         </section>
         <div className='container mb-4'>

@@ -57,6 +57,7 @@ class ProductList extends Component {
     })
   }
   componentWillMount () {
+  
     var url = this.state.api +
       '/implDeport/'
     try {
@@ -73,6 +74,7 @@ class ProductList extends Component {
         })
     } catch(err) {}
   }
+
   /*
                           Do Your Keyword Research
     Implementamos los keywords, ya que investigamos un poco y nos enteramos que
@@ -87,6 +89,9 @@ class ProductList extends Component {
     Google Keyword Planner,Google Trends y Übersuggest.
    */
   render () {
+    if(!localStorage.loggedUser||localStorage.loggedUser==='null'){
+      window.location = '/Register'
+    }
     return (
       <div>
         <MetaTags>
@@ -95,7 +100,7 @@ class ProductList extends Component {
             <meta name="keywords" content="Products,Productos,Artículos deportivos, Suplementos deportivos, Tecnoloía deportiva" />
             <meta property="og:title" content="E-Commerce" />
         </MetaTags>        
-        <h2 className='ml-3 mt-3'>Available products</h2>
+        <h2 className='ml-3 mt-3'>Productos</h2>
         <div className='input-group-prepend m-3'>
           <span className='input-group-text' id='inputGroup-sizing-default'><img src={Lupa} /></span>
           <input
@@ -108,7 +113,7 @@ class ProductList extends Component {
         </div>
         {!this.state.productos && !this.state.isfiltrado ?
                             <div className="alert alert-primary" role="alert">
-                                <i><strong>Loading...</strong></i>
+                                <i><strong>Cargando...</strong></i>
                             </div>
                             :
                             !this.state.isfiltrado && !this.state.datosFiltrados ?

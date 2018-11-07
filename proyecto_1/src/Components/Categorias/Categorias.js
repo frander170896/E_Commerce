@@ -110,6 +110,9 @@ class Categorias extends Component {
     })
   }
   render() {
+    if(!localStorage.loggedUser||localStorage.loggedUser==='null'){
+      window.location = '/Register'
+    }
     return (
       <div className="row jobs">
         <MetaTags>
