@@ -47,7 +47,7 @@ class NoticiaItem extends Component {
     }
     comentar(e) {
         const index2 = e.currentTarget.getAttribute('data-item');
-        this.guardar(index2,1,'hola');
+        this.guardar(index2, 1, 'hola');
     }
 
     guardar(noticia, usuario, comentario) {
@@ -140,7 +140,11 @@ class NoticiaItem extends Component {
                                         <textarea name="otherDetails" class="form-control" rows="2" id="comment" placeholder="Other details"></textarea>
                                     </div>
                                     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                                        <button className="btn btn-primary btn-sm" key={this.props.NOTICIA_ID} data-item={this.props.NOTICIA_ID} onClick={this.comentar}>Comentar</button>
+                                        {localStorage.loggedUser && localStorage.loggedUser !== 'null' ?
+                                            <button className="btn btn-primary btn-sm" key={this.props.NOTICIA_ID} data-item={this.props.NOTICIA_ID} onClick={this.comentar}>Comentar</button>
+                                            : <button className="btn btn-primary btn-sm" key={this.props.NOTICIA_ID} data-item={this.props.NOTICIA_ID} onClick={this.comentar} disabled>Comentar</button>
+                                        }
+
                                     </div>
 
                                 </div>
@@ -149,7 +153,10 @@ class NoticiaItem extends Component {
                         </div>
                     </div>
                     <div className="col-sm-6 ">
+
                         <Comentarios NOTICIA_ID={this.props.NOTICIA_ID} />
+
+
                     </div>
                 </div>
             </div>
