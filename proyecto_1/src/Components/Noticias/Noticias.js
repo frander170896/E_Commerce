@@ -49,7 +49,7 @@ class Noticias extends Component {
     filterList(event) {
         var updatedList = this.state.productos
         updatedList = updatedList.filter(function (item) {
-            return item.nombre.toLowerCase().search(
+            return item.DESCRIPCION.toLowerCase().search(
                 event.target.value.toLowerCase()) !== -1
         })
         this.setState({
