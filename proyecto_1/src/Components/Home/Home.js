@@ -2,6 +2,8 @@
 import React, { Component } from 'react';
 import CardGroup from './CardGroup';
 import MetaTags from 'react-meta-tags'
+import '../Global/css/SocialBar.css';
+import SocialBar from './SocialBar'
 
 class Home extends Component {
     
@@ -18,6 +20,7 @@ class Home extends Component {
         <hr/>
         <h2><small><i>Our best products:</i></small></h2>
         <CardGroup/>
+        <SocialBar/>
       </div>
     );
   }
