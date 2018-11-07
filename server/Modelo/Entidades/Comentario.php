@@ -6,7 +6,7 @@ class Comentario {
         try {
             $dbh = Conexion::getConexionPDO();
             if ($noticia) {
-                $select = "SELECT * FROM COMENTARIOS WHERE NOTICIA_ID=" . $noticia;
+                $select = "SELECT comentarios.*,usuarios.nombrecompleto FROM COMENTARIOS LEFT JOIN usuarios ON usuarios.id = comentarios.USUARIO_ID WHERE NOTICIA_ID=" . $noticia;
                 $stmt = $dbh->prepare($select);
                 $stmt->execute();
                 $data = Array(); 
@@ -26,7 +26,7 @@ class Comentario {
         $dbh = Conexion::getConexionPDO(); 
         try {
             if ($id == null) {
-                $stmt = $dbh->prepare("SELECT * FROM COMENTARIOS"); 
+                $stmt = $dbh->prepare("SELECT comentarios.*,usuarios.nombrecompleto FROM COMENTARIOS LEFT JOIN usuarios ON usuarios.id = comentarios.USUARIO_ID"); 
             $stmt->execute(); 
             $data = Array(); 
             while ($result = $stmt->fetch(PDO::FETCH_ASSOC)) {

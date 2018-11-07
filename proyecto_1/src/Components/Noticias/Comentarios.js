@@ -3,24 +3,7 @@ import React, { Component } from 'react';
 import Company from "../Global/images/logo.svg";
 import NoticiaImage from '../Global/images/noticia.png'
 
-class ProductDetail extends Component {
-    render() {
-        return (
-            <img src={NoticiaImage}
-                className="img-thumbnail img-company" alt="noticia img" />
-        );
-    }
-}
 
-class ApplyLink extends Component {
-    render() {
-        return (
-            <a className='active btn btn-link text-white' target="_blank" href={this.props.company_url}>
-                {this.props.action_name}
-            </a>
-        );
-    }
-}
 
 class Comentarios extends Component {
     constructor(props) {
@@ -76,7 +59,7 @@ class Comentarios extends Component {
                             this.state.comentarios.length > 0 ?
                             this.state.comentarios.map(elemento => 
                              <tr key={elemento.NOTICIA_ID}>
-                                <td>{elemento.USUARIO_ID}</td>
+                                <td>{elemento.nombrecompleto}</td>
                                 <td>{elemento.DESCRIPCION}</td>
                                 <td>{elemento.FECHA}</td>
                             </tr>

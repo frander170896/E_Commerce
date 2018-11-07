@@ -26,11 +26,13 @@ class NoticiaItem extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            comentario: '',
             server_url: 'http://localhost:8098/Proyectos/E_Commerce/',
             api: 'http://localhost:8098/Proyectos/E_Commerce/server/Controlador/index.php',
             show: false
         };
         this.handleShow = this.handleShow.bind(this);
+        this.handleComment = this.handleComment.bind(this)
         this.comentar = this.comentar.bind(this);
         this.guardar = this.guardar.bind(this);
     }
@@ -45,13 +47,22 @@ class NoticiaItem extends Component {
         const array = this.generarArray(id, nombre, descripcion, precio, creado);
         this.props.evento(array);
     }
+    handleComment(event) {
+        var val = event.target.value
+        this.setState({
+            comentario: val
+        })
+    }
     comentar(e) {
         const index2 = e.currentTarget.getAttribute('data-item');
-        this.guardar(index2, 1, 'hola');
+        if (localStorage.loggedUser) {
+           const user = JSON.parse(localStorage.loggedUser) 
+            this.guardar(index2, user.id, this.state.comentario);
+        }
     }
 
     guardar(noticia, usuario, comentario) {
-        alert('guardando')
+        //alert('guardando')
         var url = this.state.api +
             '/comentario//';
         var data1 = JSON.stringify({
@@ -61,7 +72,7 @@ class NoticiaItem extends Component {
             USUARIO_ID: usuario,
             NOTICIA_ID: noticia
         })
-        console.log(data1)
+        // console.log(data1)
         fetch(url, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -137,7 +148,7 @@ class NoticiaItem extends Component {
                                 </p>
                                 <div class="row">
                                     <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-                                        <textarea name="otherDetails" class="form-control" rows="2" id="comment" placeholder="Other details"></textarea>
+                                        <textarea name="otherDetails" class="form-control" rows="2" id="comment" placeholder="Other details" onChange={this.handleComment}></textarea>
                                     </div>
                                     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
                                         {localStorage.loggedUser && localStorage.loggedUser !== 'null' ?
