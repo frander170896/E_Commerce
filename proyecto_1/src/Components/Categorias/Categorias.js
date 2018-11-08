@@ -123,9 +123,9 @@ class Categorias extends Component {
         </MetaTags>
         <div className="col-ms-4 col-md-3 col-lg-2 mt-3" >
           <div className='ml-3 mt-3'>
-            <label><strong>Select Category</strong></label>
+            <label><strong>Seleccione la categoría</strong></label>
             <select id='ubicacion' required className="custom-select" onChange={this.filterCategory}>
-              <option value='All'>All Categories</option>
+              <option value='All'>Todas las categorías</option>
                   {this.state.categorias.map((item, key) =>
                     <option key={item.id}
                         value={item.CATEGORY_NAME}>
@@ -137,7 +137,7 @@ class Categorias extends Component {
         </div>
         <div className="col-ms-8 col-md-9 col-lg-10" >
 
-          <h2 className='ml-3 mt-3'>Available products</h2>
+          <h2 className='ml-3 mt-3'>Todas las categorías</h2>
           <div className='input-group-prepend m-3'>
             <span className='input-group-text' id='inputGroup-sizing-default'><img src={Lupa} /></span>
             <input
@@ -150,7 +150,7 @@ class Categorias extends Component {
           </div>
           {!this.state.productos && !this.state.isfiltrado ?
             <div className="alert alert-primary" role="alert">
-              <i><strong>Loading...</strong></i>
+              <i><strong>Cargando...</strong></i>
             </div>
             :
             !this.state.isfiltrado && !this.state.datosFiltrados ?

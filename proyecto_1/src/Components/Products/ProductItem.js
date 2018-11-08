@@ -69,28 +69,28 @@ class ProductItem extends Component {
                     <div className="col-sm-9 ">
                         <div className="card  card-job">
                             <div className="card-body">
-                                <h4 className="card-title">Product</h4>
+                                <h4 className="card-title">Producto</h4>
                                 <h5 className="card-subtitle mb-2">{this.props.nombre}</h5>
                                 <p> <i>
-                                    <strong>Description:  </strong>
+                                    <strong>Descripción:  </strong>
                                      {this.props.descripcion ? this.props.descripcion : 'Not especified.'}
                                 </i>
                                 </p>
                                 <p>
-                                    <i><strong>Job Type:  </strong> {"₡"+this.props.precio}</i>
+                                    <i><strong>Tipo de producto:  </strong> {"₡"+this.props.precio}</i>
                                 </p>
                                 <p>
                                     <i><strong>Items:  </strong> {this.props.cantidad}</i>
                                 </p>
                                 <p className="card-text">
-                                <i><strong>Last Modified:  </strong> {this.props.creado}</i>
+                                <i><strong>Última modificación:  </strong> {this.props.creado}</i>
                                 
                                 </p>
                                 <button className="btn btn-danger"
                                  onClick={()=>{this.handleDetails(this.props.id,this.props.nombre,
                                  this.props.descripcion,
                                  this.props.precio,this.props.creado) 
-                                 }} >Add to cart</button>
+                                 }} >Agregar al carrito</button>
                             </div>
                         </div>
                     </div>

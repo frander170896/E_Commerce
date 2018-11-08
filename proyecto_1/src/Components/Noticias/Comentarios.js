@@ -19,7 +19,7 @@ class Comentarios extends Component {
     componentWillMount() {
         var url = this.state.api +
             '/comentario/' + this.props.NOTICIA_ID
-        alert('comentatrios')
+       
         try {
             fetch(url)
                 .then((response) => {
