@@ -29,7 +29,7 @@ class SocialBar extends Component {
             
             </ul>
             <hr/>
-            <div className="row">
+            <div>
                 <div className="Face-Publicaciones">
                     <h3>Publicaciones recientes en Facebook</h3>
                     <p>Click en me gusta y participa en premios mensuales...</p>
