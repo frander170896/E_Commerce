@@ -27,7 +27,7 @@ class Menu extends Component {
                     <a className="nav-link" activeClassName="active" activeStyle={{ color: 'blue' }} href="/Register">Registrarse</a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" activeClassName="active" activeStyle={{ color: 'blue' }} href="/Register">SEO</a>
+                    <a className="nav-link" activeClassName="active"  target="_blank" activeStyle={{ color: 'blue' }} href="http://localhost:8098/Proyectos/E_Commerce/proyecto_1/src/Components/Global/files/COMPRASONLINE.pdf">SEO</a>
                 </li>
             </ul>
         </div>
