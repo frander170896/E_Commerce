@@ -102,7 +102,7 @@ class ProductList extends Component {
         </MetaTags>        
         <h2 className='ml-3 mt-3'>Productos</h2>
         <div className='input-group-prepend m-3'>
-          <span className='input-group-text' id='inputGroup-sizing-default'><img src={Lupa} /></span>
+          <span className='input-group-text' id='inputGroup-sizing-default'><img src={Lupa} alt='lupa busqueda' /></span>
           <input
             className='form-control'
             aria-label='Default'
