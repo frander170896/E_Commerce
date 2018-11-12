@@ -91,7 +91,7 @@ class Noticias extends Component {
                     </div>
                     <div className='col-xs-9 col-sm-9 col-md-9 col-lg-9'>
                         <div className='input-group-prepend'>
-                            <span className='input-group-text' id='inputGroup-sizing-default'><img src={Lupa} /></span>
+                            <span className='input-group-text' id='inputGroup-sizing-default'><img src={Lupa} alt='lupa busqueda'/></span>
                             <input
                                 className='form-control'
                                 aria-label='Default'

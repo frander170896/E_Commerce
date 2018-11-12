@@ -139,7 +139,7 @@ class Categorias extends Component {
 
           <h2 className='ml-3 mt-3'>Todas las categorías</h2>
           <div className='input-group-prepend m-3'>
-            <span className='input-group-text' id='inputGroup-sizing-default'><img src={Lupa} /></span>
+            <span className='input-group-text' id='inputGroup-sizing-default'><img src={Lupa} alt='lupabusqueda' /></span>
             <input
               className='form-control'
               aria-label='Default'
