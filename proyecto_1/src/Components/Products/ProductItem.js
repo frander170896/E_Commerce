@@ -7,7 +7,7 @@ class ProductDetail extends Component {
         return (
             <img src={this.props.company_logo ?
                 this.props.server_url+this.props.company_logo : Company} 
-                 className="img-thumbnail img-company" alt="company" />
+                 className="img-thumbnail img-company" alt="Imagen del producto" />
         );
     }
 }
@@ -61,7 +61,7 @@ class ProductItem extends Component {
                             </div>
                             <p>
                                 <i>{this.props.company_description}
-                                    <ApplyLink company_url={this.props.imagen} action_name={'Visit Us'} />
+                                    <ApplyLink company_url={this.props.imagen} action_name={'Visítenos'} />
                                 </i>
                             </p>
                         </div>
